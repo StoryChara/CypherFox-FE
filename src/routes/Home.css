@@ -129,30 +129,19 @@
     }
 }
 
+/* --------- SECCIÓN MÉTODOS --------- */
+
 .cf-metodos {
-    padding: 6rem 0rem;
-    margin: 2rem 0rem;
+    padding: 6rem 0;
+    margin: 2rem 0;
     background-color: #0B0913;
 }
 
+/* Encabezado centrado y acotado */
 .cf-metodos-header {
     text-align: center;
-    margin-bottom: 3rem;
-}
-
-/* Sección destacada del carrusel */
-.cf-metodos-highlight {
-    padding: 4rem 8%;
-    background-color: #0B0913;
-}
-
-.cf-metodos-highlight-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.cf-metodos-header {
     width: 75%;
+    max-width: 720px;
     margin: 0 auto 3rem;
 }
 
@@ -170,7 +159,7 @@
     margin-top: 0.4rem;
 }
 
-/* Contenedor de la lista de métodos destacados */
+/* Contenedor de la lista de métodos (centrado) */
 .cf-metodos-list {
     position: relative;
     margin-top: 1.5rem;
@@ -178,6 +167,9 @@
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
+    /* centra horizontalmente las cards */
+    align-items: stretch;
+    /* TODAS las columnas misma altura de wrapper */
 }
 
 /* Wrapper de cada método dentro de la lista */
@@ -185,14 +177,20 @@
     flex: 0 0 260px;
     max-width: 280px;
     display: flex;
+    align-items: stretch;
+    /* el contenido ocupa toda la altura */
 }
 
-/* Asegura que la cf-method-card se adapte bien al wrapper */
+/* La tarjeta se adapta al wrapper y llena la altura */
 .cf-metodos-slide-wrapper .cf-method-card {
     width: 100%;
     max-width: 100%;
+    height: 100%;
+    /* misma altura que sus vecinas en la fila */
+    display: flex;
 }
 
+/* Animación suave tipo balanceo en desktop */
 @keyframes cf-metodos-sway {
     0% {
         transform: translateX(0);
@@ -216,31 +214,44 @@
 }
 
 .cf-metodos-slide-wrapper:nth-child(3) {
-    animation-delay: 1.0s;
+    animation-delay: 1s;
 }
 
 .cf-metodos-slide-wrapper:nth-child(4) {
     animation-delay: 1.5s;
 }
 
-/* ---------- Móvil: lista vertical sencilla, sin animación ---------- */
-
+/* ---------- Móvil: lista vertical centrada, misma altura ---------- */
 @media (max-width: 768px) {
+    .cf-metodos {
+        padding: 3.5rem 0;
+    }
+
     .cf-metodos-list {
         flex-direction: column;
-        align-items: stretch;
+        /* columna */
         flex-wrap: nowrap;
         gap: 0.9rem;
         width: 75%;
         margin: 0 auto;
+        /* centra el bloque en la página */
+        align-items: stretch;
+        /* cada fila ocupa todo el ancho del 75% */
+        justify-content: flex-start;
     }
 
     .cf-metodos-slide-wrapper {
         flex: 1 1 auto;
+        width: 100%;
+        max-width: none;
+        animation: none;
+        /* sin balanceo en móvil */
     }
 
     .cf-metodos-slide-wrapper .cf-method-card {
+        width: 100%;
         max-width: 100%;
+        height: 100%;
     }
 }
 

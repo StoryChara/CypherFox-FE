@@ -28,14 +28,29 @@
     margin-bottom: 0.6rem;
 }
 
+@keyframes cf-footer-heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
 .cf-footer-logo-img {
     width: 32px;
     height: 32px;
     object-fit: contain;
+    animation: cf-footer-heartbeat 3.2s ease-in-out infinite;
+    transform-origin: center;
 }
 
-/* Usa la clase global .logo (Iceberg + naranja).
-   Aquí solo ajustamos el tamaño en footer. */
 .cf-footer-logo-text {
     font-size: 1.2rem;
 }
