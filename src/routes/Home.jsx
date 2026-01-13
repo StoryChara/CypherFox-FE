@@ -31,6 +31,17 @@ const fakeRanking = [
 ];
 
 const Home = () => {
+
+    const [featuredMethods, setFeaturedMethods] = useState([]);
+
+    useEffect(() => {
+        const allMethods = Methods_Short();
+        const shuffled = [...allMethods].sort(() => Math.random() - 0.5);
+        const selected = shuffled.slice(0, 3);
+        setFeaturedMethods(selected);
+    }, []);
+
+
     const heroRef = useRef(null);
     const metodosRef = useRef(null);
     const rankingRef = useRef(null);
@@ -311,15 +322,11 @@ const Home = () => {
                 </div>
 
                 <div className="cf-metodos-list">
-                    {Methods_Short()
-                        .sort(() => Math.random() - 0.5)
-                        .slice(0, 3)
-                        .map((card, index) => (
-                            <div key={index} className="cf-metodos-slide-wrapper">
-                                {card}
-                            </div>
-                        ))}
-
+                    {featuredMethods.map((card, index) => (
+                        <div key={index} className="cf-metodos-slide-wrapper">
+                            {card}
+                        </div>
+                    ))}
                     <div className="cf-metodos-slide-wrapper">
                         <More_Short />
                     </div>
