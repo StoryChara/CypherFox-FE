@@ -78,6 +78,10 @@
     gap: 0.4rem;
 }
 
+.logo-link {
+    text-decoration: none;
+}
+
 .logo-img {
     height: 50px;
     object-fit: contain;
@@ -85,6 +89,7 @@
 
 .logo-text {
     font-size: 1.5rem;
+    text-decoration: none;
 }
 
 .card-nav-cta-button {

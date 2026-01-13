@@ -1,5 +1,6 @@
 // src/components/Footer.jsx
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -70,7 +71,6 @@ const Footer = () => {
     return (
         <footer className="cf-footer" ref={footerRef}>
             <div className="cf-footer-inner">
-                
                 {/* Marca y descripción */}
                 <div className="cf-footer-brand">
                     <div className="cf-footer-logo">
@@ -83,7 +83,7 @@ const Footer = () => {
                     </p>
                 </div>
 
-                {/* Navegación*/}
+                {/* Navegación */}
                 <div className="cf-footer-links">
                     {items.map((section) => (
                         <div key={section.label} className="cf-footer-column">
@@ -91,9 +91,12 @@ const Footer = () => {
                             <ul className="cf-footer-column-list">
                                 {section.links?.map((link) => (
                                     <li key={link.label}>
-                                        <a href={link.href} className="cf-footer-link">
+                                        <Link
+                                            to={link.href}
+                                            className="cf-footer-link"
+                                        >
                                             {link.label}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

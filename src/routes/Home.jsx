@@ -1,5 +1,6 @@
-// src/components/HomeHero.jsx
+// src/components/Hero.jsx
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -9,6 +10,8 @@ import './Home.css';
 import { Methods_Short, More_Short } from '../components/Methods.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const positionEmojis = ['🥇', '🥈', '🥉', '🏅', '🎖️'];
 
 const fakeRanking = [
     { usuario: 'MaestroEncriptación', puntos: '8,247' },
@@ -48,7 +51,7 @@ const Home = () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: section,
-                    start: 'top 80%',          // cuando el top del hero entra al 80% del viewport
+                    start: 'top 80%',
                     end: 'bottom 40%',
                     toggleActions: 'play none none reverse',
                 },
@@ -217,12 +220,12 @@ const Home = () => {
                     </p>
 
                     <div className="cf-hero-actions">
-                        <a href="/metodos" className="cf-hero-btn cf-hero-btn-primary">
+                        <Link to="/metodos" className="cf-hero-btn cf-hero-btn-primary">
                             Explorar Métodos
-                        </a>
-                        <a href="/ranking" className="cf-hero-btn cf-hero-btn-secondary">
+                        </Link>
+                        <Link to="/ranking" className="cf-hero-btn cf-hero-btn-secondary">
                             Ver Ranking
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -245,6 +248,7 @@ const Home = () => {
                                 {card}
                             </div>
                         ))}
+
                     <div className="cf-metodos-slide-wrapper">
                         <More_Short />
                     </div>
@@ -277,18 +281,7 @@ const Home = () => {
                                     className={idx % 2 === 0 ? 'cf-ranking-row--top' : 'cf-ranking-row--bot'}
                                 >
                                     <td className="cf-ranking-pos">
-                                        {idx === 0
-                                            ? '🥇'
-                                            : idx === 1
-                                                ? '🥈'
-                                                : idx === 2
-                                                    ? '🥉'
-                                                    : idx === 3
-                                                        ? '🏅'
-                                                        : idx === 4
-                                                            ? '🎖️'
-                                                            : ''}{' '}
-                                        #{idx + 1}
+                                        {positionEmojis[idx] || ''} #{idx + 1}
                                     </td>
                                     <td className="cf-ranking-user">{row.usuario}</td>
                                     <td className="cf-ranking-points">{row.puntos}</td>
@@ -297,9 +290,9 @@ const Home = () => {
                         </tbody>
                     </table>
 
-                    <a href="/ranking" className="cf-ranking-link">
+                    <Link to="/ranking" className="cf-ranking-link">
                         Ver Tabla Completa →
-                    </a>
+                    </Link>
                 </div>
             </section>
         </>

@@ -1,21 +1,26 @@
 // App.jsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
+
 import Home from './routes/Home.jsx';
 
 import './App.css';
-
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
       <main className="main-layout">
-        <Home />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<div>NOT FOUND</div>} />
+        </Routes>
       </main>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

@@ -1,5 +1,6 @@
 // src/components/Navbar.jsx
 import { useLayoutEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { GoArrowUpRight } from 'react-icons/go';
 
@@ -14,14 +15,13 @@ const CardNav = ({
     buttons,
     className = '',
     ease = 'power3.out',
-    baseColor = '#06040E',        // fondo navbar
-    menuColor = '#138245',        // ícono hamburguesa
-    buttonBgColor = '#E78F41',    // fondo botón
-    buttonTextColor = '#06040E'   // texto botón
+    baseColor = '#06040E',
+    menuColor = '#138245',
+    buttonBgColor = '#E78F41',
+    buttonTextColor = '#06040E'
 }) => {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-
     const navRef = useRef(null);
     const cardsRef = useRef([]);
     const tlRef = useRef(null);
@@ -44,6 +44,8 @@ const CardNav = ({
                 contentEl.style.pointerEvents = 'auto';
                 contentEl.style.position = 'static';
                 contentEl.style.height = 'auto';
+
+                // Forzar reflow
                 contentEl.offsetHeight;
 
                 const topBar = 60;
@@ -165,34 +167,40 @@ const CardNav = ({
                         <div className="hamburger-line" />
                     </div>
 
-                    {/* Logo CypherFox */}
+                    {/* Logo → ruta raíz */}
                     <div className="logo-container">
-                        <img src={logo} alt={logoAlt} className="logo-img" />
-                        <span className="logo logo-text">CypherFox</span>
+                        <Link to="/" className="logo-link">
+                            <img src={logo} alt={logoAlt} className="logo-img" />
+                            <span className="logo logo-text">CypherFox</span>
+                        </Link>
                     </div>
 
-                    {/* Botón Iniciar Sesión en la barra superior (desktop) */}
-                    <a
+                    {/* Botón Iniciar Sesión (top) */}
+                    <Link
                         type="button"
                         className="card-nav-cta-button card-nav-cta-button--top"
                         style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-                        href={buttons && buttons[0]?.href}
+                        to={buttons && buttons[0]?.href}
                     >
                         {buttons && buttons[0]?.label}
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="card-nav-content" aria-hidden={!isExpanded}>
-                    {/* Botón Iniciar Sesión dentro del menú */}
+                    {/* Botón Iniciar Sesión (dentro del menú) */}
                     <div className="nav-card nav-card-login">
-                        <a
+                        <Link
                             type="button"
                             className="card-nav-cta-button card-nav-cta-button--full"
                             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-                            href={buttons && buttons[0]?.href}
+                            to={buttons && buttons[0]?.href}
+                            onClick={() => {
+                                // opcional: cerrar menú al navegar
+                                if (isExpanded) toggleMenu();
+                            }}
                         >
                             {buttons && buttons[0]?.label}
-                        </a>
+                        </Link>
                     </div>
 
                     {(items || []).slice(0, 3).map((item, idx) => (
@@ -208,18 +216,21 @@ const CardNav = ({
                             <div className="nav-card-label">{item.label}</div>
                             <div className="nav-card-links">
                                 {item.links?.map((lnk, i) => (
-                                    <a
+                                    <Link
                                         key={`${lnk.label}-${i}`}
                                         className="nav-card-link"
-                                        href={lnk.href}
+                                        to={lnk.href}
                                         aria-label={lnk.ariaLabel || lnk.label}
+                                        onClick={() => {
+                                            if (isExpanded) toggleMenu();
+                                        }}
                                     >
                                         <GoArrowUpRight
                                             className="nav-card-link-icon"
                                             aria-hidden="true"
                                         />
                                         {lnk.label}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
