@@ -279,7 +279,7 @@ const Home = () => {
                         </h1>
                     </div>
 
-                    <p className="cf-hero-subtitle">
+                    <p>
                         <TextType
                             key={heroTypingKey}
                             text="Domina el arte de la criptografía aprende los fundamentos de la criptografía a través de simulaciones interactivas, visualizaciones claras y desafíos prácticos evaluados automáticamente."

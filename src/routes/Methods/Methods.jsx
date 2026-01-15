@@ -1,8 +1,9 @@
 // src/routes/Methods/Methods.jsx
 import React, { useState } from 'react';
 import './Methods.css';
-import LightPillar from '../../components/LightPillar';
 import { Methods_Full } from '../../components/Methods';
+
+import FloatingLines from '../../components/FloatingLines';
 
 const Methods = () => {
   const [labsUsuario, setLabsUsuario] = useState({
@@ -12,22 +13,22 @@ const Methods = () => {
     Hill: true,
   });
 
-  // Obtenemos el array de cards JSX
   const metodoCards = Methods_Full({ labs_usuario: labsUsuario });
 
   return (
     <div className="cf-methods-page">
       <div className="cf-methods-bg">
-        <LightPillar
-          topColor="#075f2f"
-          bottomColor="#03411f"
-          intensity={1.5}
-          rotationSpeed={1.5}
-          glowAmount={0.005}
-          pillarHeight={1}
-          pillarRotation={200}
-          className="cf-methods-bg-pillar"
-          mixBlendMode="screen"
+        <FloatingLines
+          linesGradient={['#138245', '#06040E', '#E78F41', '#06040E']}
+          enabledWaves={['middle', 'top', 'bottom']}
+          lineCount={8}
+          lineDistance={100}
+          bendRadius={1}
+          bendStrength={0}
+          mixBlendMode="normal"
+          interactive={false}
+          backgroundHex="#050211"
+          backgroundMix={0.8}
         />
       </div>
 
