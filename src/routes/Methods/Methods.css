@@ -35,10 +35,13 @@
 }
 
 .cf-methods-header-title {
-    font-family: 'WDXL Lubrifont SC', 'Montserrat Alternates', system-ui, sans-serif;
     font-size: 2.5rem;
     color: var(--cf-orange);
     margin-bottom: 1rem;
+}
+
+.cf-methods-header-title--encrypted {
+    color: var(--cf-green);
 }
 
 .cf-methods-header-description {

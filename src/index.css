@@ -28,17 +28,12 @@ body {
   color: var(--cf-orange);
 }
 
-/* H1 – WDXL Lubrifont SC en naranja */
-h1 {
-  font-family: 'WDXL Lubrifont SC', 'Montserrat Alternates', system-ui, sans-serif;
-  color: var(--cf-orange);
-}
-
 /* H2 / H3 – Montserrat Alternates en blanco */
+h1,
 h2,
 h3 {
   font-family: 'Montserrat Alternates', system-ui, sans-serif;
-  color: var(--cf-text);
+  color: var(--cf-orange);
 }
 
 /* Texto general – PT Sans en blanco */
