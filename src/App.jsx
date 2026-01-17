@@ -9,6 +9,7 @@ import Home from './routes/Home.jsx';
 import Methods from './routes/Methods/Methods.jsx';
 
 import NotFoundPage from './routes/Others/NotFound.jsx';
+import Creditos from './routes/Others/Creditos.jsx';
 
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -21,6 +22,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/metodos" element={<Methods />} />
+
+          <Route path="/creditos" element={<Creditos />} />
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

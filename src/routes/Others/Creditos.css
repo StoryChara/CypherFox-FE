@@ -1,0 +1,44 @@
+.cred-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.cred-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cred-team,
+.cred-biblio {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cred-team-tittle,
+.cred-biblio-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cf-orange);
+  margin-bottom: 0;
+}
+
+.cred-team-tittle--encrypted,
+.cred-biblio-title--encrypted {
+  color: var(--cf-green);
+}
+
+.cred-biblio-stack-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
