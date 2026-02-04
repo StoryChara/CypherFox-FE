@@ -18,7 +18,31 @@ export const metodos = [
         descripcion_corta: 'Cifrado de sustitución simple con desplazamiento fijo.',
         descripcion: 'Cifrado de sustitución simple donde cada letra del mensaje se reemplaza por otra desplazada un número fijo de posiciones en el alfabeto. Atribuido a Julio César, es fácil de implementar pero muy vulnerable al análisis de frecuencias y fuerza bruta.',
         href: '/metodos/caesar',
-        icono: 'fa-solid fa-arrow-right-arrow-left'
+        icono: 'fa-solid fa-arrow-right-arrow-left',
+        lab_cifrado: {
+            descripcion: "Dada una clave k, cifra el texto desplazando k caracteres.",
+            nombre: "caesar_encrypt",
+            parametros: [("k", "int"), ("texto", "str")],
+            salida: "str",
+            ejemplos: [
+                {
+                    parametros: [14, "CAESAR"],
+                    resultados: "QOSGOF"
+                }
+            ]
+        },
+        lab_descifrado: {
+            descripcion: "Dada una clave k, descifra el texto retrocediendo k caracteres.",
+            nombre: "caesar_decrypt",
+            parametros: [("k", "int"), ("texto", "str")],
+            salida: "str",
+            ejemplos: [
+                {
+                    parametros: [14, "QOSGOF"],
+                    resultados: "CAESAR"
+                }
+            ]
+        }
     },
     {
         nombre: 'Vigenère',  
