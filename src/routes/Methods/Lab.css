@@ -1,0 +1,507 @@
+/* ===========================
+   PÁGINA DE LAB
+   =========================== */
+
+.cf-lab-page {
+    background-color: var(--cf-bg);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    color: var(--cf-text);
+}
+
+/* FONDO FIJO CON FAULTY TERMINAL */
+
+.cf-lab-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(1.5px);
+}
+
+/* El contenedor del FaultyTerminal rellena todo */
+.cf-lab-bg>.faulty-terminal-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* VELO OSCURO ENCIMA DEL FAULTY TERMINAL */
+.cf-lab-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: #06040E;
+    opacity: 0.5;
+}
+
+/* CONTENIDO DEL LAB */
+
+.cf-lab-content {
+    position: relative;
+    z-index: 1;
+    padding: 4rem 0;
+}
+
+/* ===========================
+   HEADER DEL LAB
+   =========================== */
+
+.cf-lab-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.75rem;
+    padding: 1.6rem 1.8rem;
+    border-radius: 18px;
+    background: radial-gradient(circle at top left,
+            rgba(6, 4, 14, 0.96) 25%,
+            rgba(19, 130, 69, 0.32));
+    border: 1px solid rgba(231, 143, 65, 0.5);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.85);
+
+    max-width: 50%;
+    margin: 0 auto 2.5rem;
+
+    /* Animación de entrada */
+    animation: cf-lab-header-in 0.8s ease-out both;
+}
+
+@keyframes cf-lab-header-in {
+    from {
+        opacity: 0;
+        transform: translateY(-18px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Contenedor de texto (badge + título + subtítulo) */
+.cf-lab-header>div {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+/* Badge */
+.cf-lab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(19, 130, 69, 0.25);
+    border: 1px solid rgba(19, 130, 69, 0.7);
+    color: var(--cf-text);
+    width: fit-content;
+}
+
+/* Título del método */
+.cf-lab-title {
+    font-family: 'Montserrat Alternates', system-ui, sans-serif;
+    font-size: 2.1rem;
+    color: var(--cf-orange);
+    margin: 0;
+}
+
+.cf-lab-title--encrypted {
+    color: var(--cf-green);
+}
+
+/* Descripción larga */
+.cf-lab-subtitle {
+    font-size: 0.98rem;
+    max-width: 540px;
+    margin: 0;
+    color: rgba(249, 244, 244, 0.88);
+}
+
+/* Imagen de bienvenida del header */
+.cf-lab-header-img {
+    flex-shrink: 0;
+    max-width: 180px;
+    height: auto;
+    filter: drop-shadow(0 14px 40px rgba(0, 0, 0, 0.9));
+
+    /* Flotación suave */
+    animation: cf-lab-header-float 3.2s ease-in-out infinite;
+}
+
+@keyframes cf-lab-header-float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVO: en pantallas pequeñas, apilar texto e imagen */
+@media (max-width: 768px) {
+    .cf-lab-header {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 1.4rem 1.2rem;
+        max-width: 90%;
+    }
+
+    .cf-lab-header>div {
+        text-align: center;
+        align-items: center;
+    }
+
+    .cf-lab-title {
+        font-size: 1.7rem;
+    }
+
+    .cf-lab-subtitle {
+        max-width: 100%;
+    }
+
+    .cf-lab-header-img {
+        max-width: 150px;
+    }
+}
+
+/* ===========================
+   PANELES (CIFRADO / DESCIFRADO)
+   =========================== */
+
+.cf-lab-panels {
+    gap: 2rem;
+    /* para el row de Bootstrap */
+}
+
+/* Panel base */
+
+.cf-lab-panel {
+    background: rgba(6, 4, 14, 0.92);
+    border-radius: 16px;
+    border: 1px solid rgba(231, 143, 65, 0.35);
+    padding: 1.5rem 1.4rem;
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    /* Animación de entrada */
+    opacity: 0;
+    transform: translateY(18px);
+    animation: cf-lab-panel-in 0.7s ease-out forwards;
+}
+
+/* retrasos para que entren escalonados */
+.cf-lab-panel--encrypt {
+    border-color: rgba(19, 130, 69, 0.8);
+    animation-delay: 0.15s;
+}
+
+.cf-lab-panel--decrypt {
+    border-color: rgba(231, 143, 65, 0.7);
+    animation-delay: 0.3s;
+}
+
+@keyframes cf-lab-panel-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover ligero para dar sensación interactiva */
+.cf-lab-panel {
+    transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        border-color 0.18s ease-out;
+}
+
+.cf-lab-panel:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.9);
+    border-color: rgba(231, 143, 65, 0.9);
+}
+
+/* Títulos de panel */
+.cf-lab-panel-title {
+    font-family: 'Montserrat Alternates', system-ui, sans-serif;
+    font-size: 1.2rem;
+    color: var(--cf-orange);
+    margin: 0;
+}
+
+.cf-lab-panel-title--encrypted {
+    color: var(--cf-green);
+}
+
+/* Descripción del panel */
+.cf-lab-panel-description {
+    font-size: 0.9rem;
+    color: rgba(249, 244, 244, 0.85);
+}
+
+/* Bloque de ejemplos */
+
+.cf-lab-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cf-lab-examples-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(249, 244, 244, 0.8);
+}
+
+/* Agrupación de ExampleBlock: solo spacing vertical, Bootstrap maneja ancho */
+.cf-lab-examples-colab {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+/* Ajustes responsivos pequeños */
+@media (max-width: 576px) {
+    .cf-lab-header {
+        margin: 2.5rem;
+    }
+
+    .cf-lab-title {
+        font-size: 1.7rem;
+    }
+}
+
+/* ===========================
+   Editor de código (Monaco)
+   =========================== */
+
+.cf-lab-input {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cf-lab-input-label {
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(249, 244, 244, 0.85);
+}
+
+/* Wrapper visual del Monaco editor */
+
+.cf-lab-monaco-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(249, 244, 244, 0.15);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.7);
+    background: #06040E;
+    margin-top: 0.25rem;
+    padding: 1rem;
+
+    /* pequeña animación de aparición */
+    opacity: 0;
+    transform: translateY(16px);
+    animation: cf-lab-editor-in 0.6s ease-out 0.4s forwards;
+}
+
+@keyframes cf-lab-editor-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+   Botón principal (Enviar y Calificar)
+   =========================== */
+
+.cf-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0.6rem 1.4rem;
+    font-family: 'PT Sans', system-ui, sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    transition:
+        background 0.18s ease-out,
+        color 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        transform 0.18s ease-out,
+        border-color 0.18s ease-out;
+}
+
+.cf-btn-primary {
+    background: rgba(19, 130, 69, 0.6);
+    border-color: rgba(19, 130, 69, 0.95);
+    color: var(--cf-text);
+    box-shadow:
+        0 0 12px rgba(19, 130, 69, 0.45),
+        0 0 24px rgba(6, 4, 14, 0.9);
+}
+
+.cf-btn-primary:hover {
+    background: rgba(19, 130, 69, 0.8);
+    border-color: var(--cf-green);
+    transform: translateY(-1px);
+    box-shadow:
+        0 0 18px rgba(19, 130, 69, 0.7),
+        0 0 32px rgba(231, 143, 65, 0.4);
+}
+
+.cf-btn-primary:active {
+    transform: translateY(0);
+    box-shadow:
+        0 0 8px rgba(19, 130, 69, 0.5),
+        0 0 18px rgba(6, 4, 14, 0.9);
+}
+
+.cf-btn-primary:focus-visible {
+    outline: 2px solid var(--cf-orange);
+    outline-offset: 2px;
+}
+
+/* Variante secundaria (botón cancelar en modales) */
+
+.cf-btn-secondary {
+    background: transparent;
+    border-color: rgba(249, 244, 244, 0.5);
+    color: var(--cf-text);
+}
+
+.cf-btn-secondary:hover {
+    background: rgba(249, 244, 244, 0.08);
+    border-color: rgba(249, 244, 244, 0.9);
+}
+
+/* ===========================
+   MODALES (Confirmación / Espera / Resultado)
+   =========================== */
+
+/* Backdrop con fade-in */
+.cf-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    animation: cf-modal-backdrop-in 0.2s ease-out;
+}
+
+@keyframes cf-modal-backdrop-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Contenedor del modal con zoom + fade */
+
+.cf-modal {
+    background: rgba(6, 4, 14, 0.98);
+    border-radius: 16px;
+    border: 1px solid rgba(231, 143, 65, 0.7);
+    max-width: 480px;
+    width: 90%;
+    padding: 1.6rem 1.8rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+    animation: cf-modal-in 0.22s ease-out forwards;
+}
+
+@keyframes cf-modal-in {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Imagen / ilustración del modal */
+
+.cf-modal-illustration {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+}
+
+.cf-modal-illustration img {
+    max-width: 120px;
+    height: auto;
+}
+
+/* Texto del modal */
+
+.cf-modal-title {
+    font-family: 'Montserrat Alternates', system-ui, sans-serif;
+    font-size: 1.3rem;
+    color: var(--cf-orange);
+    margin: 0;
+}
+
+.cf-modal-text {
+    font-size: 0.95rem;
+    color: rgba(249, 244, 244, 0.92);
+    margin: 0;
+}
+
+.cf-modal-score {
+    font-size: 0.9rem;
+    color: rgba(249, 244, 244, 0.8);
+    margin: 0.2rem 0 0;
+}
+
+/* Botones del modal */
+
+.cf-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
+}
+
+/* Spinner para el estado 'Calificando' */
+
+.cf-modal-spinner {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 3px solid rgba(249, 244, 244, 0.15);
+    border-top-color: var(--cf-green);
+    margin: 0.5rem auto 0;
+    animation: cf-spin 0.9s linear infinite;
+}
+
+@keyframes cf-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
