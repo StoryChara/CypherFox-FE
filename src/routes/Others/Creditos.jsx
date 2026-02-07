@@ -18,10 +18,40 @@ const Creditos = () => {
 
   const books = [
     {
-      title: 'La estructura de los números',
-      author: 'Gregorio Morales Ordóñez',
+      title: 'Handbook of Applied Cryptography',
+      author: 'Alfred J. Menezes, Paul C. van Oorschot, Scott A. Vanstone',
       cover:
-        'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTMa45lMLT-IbSnllNJWvaZfn55WOBlYpjawMCDQxvP_6F3qN-O'
+        'https://m.media-amazon.com/images/I/61jB+1DzU0L._AC_UF1000,1000_QL80_.jpg'
+    },
+    {
+      title: 'A Graduate Course in Applied Cryptography',
+      author: 'Dan Boneh, Victor Shoup',
+      cover:
+        'https://m.media-amazon.com/images/I/71GSesdcCGL._UF1000,1000_QL80_.jpg'
+    },
+    {
+      title: 'Introduction to Cryptography: Principles and Applications',
+      author: 'Hans Delfs, Helmut Knebl',
+      cover:
+        'https://m.media-amazon.com/images/I/61dYyImisOL._AC_UF1000,1000_QL80_.jpg'
+    },
+    {
+      title: 'Introduction to Cryptography',
+      author: 'Johannes A. Buchmann',
+      cover:
+        'https://m.media-amazon.com/images/I/619jHCmMz8L._AC_UF1000,1000_QL80_.jpg'
+    },
+    {
+      title: 'Introduction to Algorithms',
+      author: 'Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein',
+      cover:
+        'https://m.media-amazon.com/images/I/61Mw06x2XcL._AC_UF1000,1000_QL80_.jpg'
+    },
+    {
+      title: 'La estructura de los números',
+      author: 'Gregorio M. Ordóñez',
+      cover:
+        'https://m.media-amazon.com/images/I/81IgyKC6JgL.jpg'
     }
   ];
 
@@ -164,14 +194,16 @@ const Creditos = () => {
             pauseOnHover
             sendToBackOnClick
             mobileClickOnly
-            cards={books.map(book => (
-              <BookCard
-                key={book.title}
-                cover={book.cover}
-                title={book.title}
-                author={book.author}
-              />
-            ))}
+            cards={books.slice()
+              .reverse()
+              .map(book => (
+                <BookCard
+                  key={book.title}
+                  cover={book.cover}
+                  title={book.title}
+                  author={book.author}
+                />
+              ))}
           />
         </div>
       </section>
