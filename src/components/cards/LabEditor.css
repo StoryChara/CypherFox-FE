@@ -1,0 +1,6 @@
+.cf-lab-monaco-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(249, 244, 244, 0.15);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.7);
+}

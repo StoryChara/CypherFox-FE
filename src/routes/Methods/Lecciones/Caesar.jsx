@@ -148,7 +148,7 @@ function Caesar() {
                                 maxIterations={60}
                             />
                         </h1>
-                        <p>
+                        <div>
                             <TextType
                                 text=" Un alfabeto que gira, una clave k y mucha curiosidad. Explora cómo un truco antiguo se convierte en una regla matemática sencilla mientras cifras tus propios mensajes."
                                 as="span"
@@ -157,7 +157,7 @@ function Caesar() {
                                 pauseDuration={1800}
                                 textColors={["var(--cf-text)"]}
                             />
-                        </p>
+                        </div>
                     </div>
 
                     <div className="hero-visual">
@@ -197,7 +197,7 @@ function Caesar() {
                                             maxIterations={60}
                                         />
                                     </h2>
-                                    <p className="lab-subtitle">
+                                    <div className="lab-subtitle">
                                         <TextType
                                             text="El anillo exterior muestra el alfabeto en claro; el interior, girado por la clave k, nos da el alfabeto cifrado."
                                             as="span"
@@ -206,7 +206,7 @@ function Caesar() {
                                             pauseDuration={1800}
                                             textColors={["var(--cf-text)"]}
                                         />
-                                    </p>
+                                    </div>
                                 </div>
                                 <div className="lab-slider">
                                     <span className="slider-label">Clave</span>
@@ -475,7 +475,7 @@ function Caesar() {
                                 </div>
                             </div>
 
-                            <p className="game-tip">
+                            <div className="game-tip">
                                 <TextType
                                     text={`Prueba distintos valores de k. ¿Cuántos intentos necesitarías, como máximo, para adivinar la clave si solo tienes un mensaje cifrado?`}
                                     as="p"
@@ -484,7 +484,7 @@ function Caesar() {
                                     pauseDuration={1800}
                                     textColors={["var(--cf-text)"]}
                                 />
-                            </p>
+                            </div>
 
                             <img
                                 src={Study}
@@ -594,9 +594,9 @@ function Caesar() {
                                 encryptedClassName="h2 text-encrypted"
                                 speed={100}
                                 maxIterations={60}
-                            />                            
+                            />
                         </h2>
-                        <p>
+                        <div>
                             <TextType
                                 text={`Completa estas pequeñas misiones usando el disco y el cifrador. Así conectas la idea de “girar el alfabeto” con pensar como criptógrafo.`}
                                 as="p"
@@ -605,7 +605,7 @@ function Caesar() {
                                 pauseDuration={1800}
                                 textColors={["var(--cf-text)"]}
                             />
-                        </p>
+                        </div>
                     </div>
 
                     <div className="missions-grid">
@@ -639,7 +639,7 @@ function Caesar() {
                                 maxIterations={60}
                             />
                         </h3>
-                        <p>
+                        <div>
                             <TextType
                                 key={missionTitleKey + "-desc"}
                                 text={currentMission.description}
@@ -649,7 +649,7 @@ function Caesar() {
                                 pauseDuration={1800}
                                 textColors={["var(--cf-text)"]}
                             />
-                        </p>
+                        </div>
 
                         <input
                             type="text"
@@ -670,77 +670,78 @@ function Caesar() {
                         >
                             Comprobar
                         </button>
-
-                        {modalAnswer && (
-                            <div
-                                className="modal-backdrop"
-                                onClick={() => setModalAnswer(false)}
-                            >
-                                <div
-                                    className="modal-content"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-                                    <h3>
-                                        <DecryptedText
-                                            text="Resultado de la misión"
-                                            className="h3"
-                                            encryptedClassName="h3 text-encrypted"
-                                            speed={120}
-                                            maxIterations={60}
-                                        />
-                                    </h3>
-
-                                    {answer.trim().toUpperCase() ===
-                                        currentMission.answer.toUpperCase() ? (
-                                        <div className="mission-feedback mission-correct">
-                                            <img
-                                                src={Happy}
-                                                alt="CypherFox celebrando el acierto"
-                                                className="mission-mascot"
-                                            />
-                                            <p>
-                                                <TextType
-                                                    text="¡Correcto! Has encontrado la respuesta esperada."
-                                                    as="p"
-                                                    typingSpeed={15}
-                                                    deletingSpeed={65}
-                                                    pauseDuration={1800}
-                                                    textColors={["var(--cf-text)"]}
-                                                />
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="mission-feedback mission-incorrect">
-                                            <img
-                                                src={Sad}
-                                                alt="CypherFox pensativo mostrando un error"
-                                                className="mission-mascot"
-                                            />
-                                            <p>
-                                                <TextType
-                                                    text={currentMission.hint}
-                                                    as="p"
-                                                    typingSpeed={15}
-                                                    deletingSpeed={65}
-                                                    pauseDuration={1800}
-                                                    textColors={["var(--cf-text)"]}
-                                                />
-                                            </p>
-                                        </div>
-                                    )}
-
-                                    <button
-                                        type="button"
-                                        className="close-button"
-                                        onClick={() => setModalAnswer(false)}
-                                    >
-                                        Entendido
-                                    </button>
-                                </div>
-                            </div>
-                        )}
                     </div>
                 </section>
+
+                {modalAnswer && (
+                    <div
+                        className="modal-backdrop"
+                        onClick={() => setModalAnswer(false)}
+                    >
+                        <div
+                            className="modal-content"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <h3>
+                                <DecryptedText
+                                    text="Resultado de la misión"
+                                    className="h3"
+                                    encryptedClassName="h3 text-encrypted"
+                                    speed={120}
+                                    maxIterations={60}
+                                />
+                            </h3>
+
+                            {answer.trim().toUpperCase() ===
+                                currentMission.answer.toUpperCase() ? (
+                                <div className="mission-feedback mission-correct">
+                                    <img
+                                        src={Happy}
+                                        alt="CypherFox celebrando el acierto"
+                                        className="mission-mascot"
+                                    />
+                                    <div>
+                                        <TextType
+                                            text="¡Correcto! Has encontrado la respuesta esperada."
+                                            as="p"
+                                            typingSpeed={15}
+                                            deletingSpeed={65}
+                                            pauseDuration={1800}
+                                            textColors={["var(--cf-text)"]}
+                                        />
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="mission-feedback mission-incorrect">
+                                    <img
+                                        src={Sad}
+                                        alt="CypherFox pensativo mostrando un error"
+                                        className="mission-mascot"
+                                    />
+                                    <div>
+                                        <TextType
+                                            text={currentMission.hint}
+                                            as="p"
+                                            typingSpeed={15}
+                                            deletingSpeed={65}
+                                            pauseDuration={1800}
+                                            textColors={["var(--cf-text)"]}
+                                        />
+                                    </div>
+                                </div>
+                            )}
+
+                            <button
+                                type="button"
+                                className="close-button"
+                                onClick={() => setModalAnswer(false)}
+                            >
+                                Entendido
+                            </button>
+                        </div>
+                    </div>
+                )}
+
             </div>
         </div>
     );

@@ -9,7 +9,7 @@ import Home from './routes/Home.jsx';
 
 import ListaMetodos from './routes/Methods/ListaMetodos.jsx';
 import Metodos from './routes/Methods/Metodos.jsx'
-
+import Lab from './routes/Methods/Lab.jsx'
 
 import NotFoundPage from './routes/Others/NotFound.jsx';
 import Creditos from './routes/Others/Creditos.jsx';
@@ -27,6 +27,7 @@ function App() {
 
           <Route path="/metodos" element={<ListaMetodos />} />
           <Route path="/metodos/:metodo" element={<Metodos />} />
+          <Route path="/lab/:metodo" element={<Lab />} />
 
           <Route path="/creditos" element={<Creditos />} />
 

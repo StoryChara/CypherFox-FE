@@ -1,7 +1,7 @@
-// src/components/Methods.jsx
+// src/components/cards/Methods.jsx
 
 import { Link } from 'react-router-dom';
-import { metodos } from '../../util/metodos.js';
+import { metodosLista as metodos } from '../../util/metodos.js';
 import './Methods.css';
 
 import DecyptedText from '../text/DecryptedText.jsx';

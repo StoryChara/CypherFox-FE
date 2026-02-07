@@ -16,7 +16,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const ListaMetodos = () => {
-  const [labsUsuario, setLabsUsuario] = useState({ 'One-Time Pad': true, 'Caesar': true, 'Vigenère': false, 'Hill': true }); // Para pruebas
+  const [labsUsuario, setLabsUsuario] = useState({ 'Caesar': true }); // Para pruebas
 
   const metodoCards = Methods_Full({ labs_usuario: labsUsuario });
 

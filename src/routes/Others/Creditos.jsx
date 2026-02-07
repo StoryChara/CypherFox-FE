@@ -107,7 +107,7 @@ const Creditos = () => {
             <div className="col-8 col-md-4 col-lg-3 d-flex justify-content-center cred-team-card">
               <ReflectiveCard
                 blurStrength={1}
-                backgroundImage="https://lh3.googleusercontent.com/a/ACg8ocLaGrVc6sQNhBBigCI98WknxsLOyW2yNwfGK-c86EW0KJaUta0X=s240-p-k-rw-no"
+                backgroundImage="https://avatars.githubusercontent.com/u/69637072?v=4"
                 userName="MARÍA JOSÉ JARA"
                 userRole="Desarrolladora Full Stack"
                 idValue="2025-CRYPTO-001"
@@ -122,6 +122,17 @@ const Creditos = () => {
                 userName="JORGE ELIECER CAMARGO"
                 userRole="Director de Proyecto"
                 idValue="2025-CRYPTO-002"
+                secureLabel="CYPHERFOX ACCESS"
+              />
+            </div>
+
+            <div className="col-8 col-md-4 col-lg-3 d-flex justify-content-center cred-team-card">
+              <ReflectiveCard
+                blurStrength={1}
+                backgroundImage="https://lh3.googleusercontent.com/a-/ALV-UjXSR222rkCbgfw2uPg_DnOvoR5N1BJAYqTLE2sZqD9XOlOTW293=s240-p-k-rw-no"
+                userName="LAURA CAMILA PINZON"
+                userRole="Artista"
+                idValue="2025-CRYPTO-003"
                 secureLabel="CYPHERFOX ACCESS"
               />
             </div>

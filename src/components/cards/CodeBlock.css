@@ -1,0 +1,94 @@
+/* Contenedor del bloque + botón de copiar */
+.cf-codeblock-wrapper {
+    position: relative;
+}
+
+/* Botón de copiar en la esquina superior derecha */
+.cf-codeblock-copy-btn {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.6rem;
+    z-index: 2;
+    border: 1px solid rgba(249, 244, 244, 0.35);
+    background: rgba(6, 4, 14, 0.95);
+    color: var(--cf-text);
+    border-radius: 999px;
+    padding: 0.15rem 0.7rem;
+    font-size: 0.72rem;
+    font-family: "PT Sans", system-ui, sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        background 0.15s ease-out,
+        border-color 0.15s ease-out,
+        transform 0.12s ease-out,
+        box-shadow 0.15s ease-out,
+        color 0.15s ease-out;
+}
+
+.cf-codeblock-copy-btn:hover {
+    background: rgba(19, 130, 69, 0.6);
+    border-color: rgba(19, 130, 69, 0.95);
+    color: var(--cf-text);
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px rgba(19, 130, 69, 0.6);
+}
+
+.cf-codeblock-copy-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0 6px rgba(19, 130, 69, 0.45);
+}
+
+.cf-codeblock-copy-btn:focus-visible {
+    outline: 2px solid var(--cf-orange);
+    outline-offset: 2px;
+}
+
+/* Estilo visual del bloque de código (react-syntax-highlighter) */
+.cf-codeblock {
+    background: rgba(10, 8, 20, 0.95) !important;
+    border-radius: 10px !important;
+    padding: 0.85rem 0.9rem !important;
+    font-size: 0.9rem !important;
+    border: 1px solid rgba(249, 244, 244, 0.05) !important;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0;
+}
+
+/* Asegurar tipografía monoespaciada coherente con tu theme */
+.cf-codeblock code {
+    font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+}
+
+.cf-exampleblock {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.6rem;
+}
+
+/* Salida tipo prompt: » resultado */
+.cf-exampleblock-output {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(6, 4, 14, 0.95);
+    border-radius: 8px;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(249, 244, 244, 0.15);
+    font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    font-size: 0.85rem;
+    color: var(--cf-text);
+}
+
+.cf-exampleblock-output-arrow {
+    color: var(--cf-orange);
+    font-weight: 600;
+}
+
+.cf-exampleblock-output-text {
+    color: rgba(249, 244, 244, 0.9);
+}
