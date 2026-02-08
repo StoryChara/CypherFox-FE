@@ -2,10 +2,71 @@
 export const metodos = {
     'one-time-pad': {
         nombre: 'One-Time Pad',
+        clave: 'one_time_pad',
         descripcion_corta: 'Cifra un mensaje con una clave aleatoria y secreta.',
         descripcion: 'Sistema simétrico que usa una clave aleatoria tan larga como el mensaje y emplea operaciones XOR. Si la clave es verdaderamente aleatoria, secreta y se usa solo una vez, ofrece seguridad matemática perfecta e imposible de romper por fuerza bruta.',
         href: '/metodos/one-time-pad',
-        icono: 'fa-solid fa-key'
+        icono: 'fa-solid fa-key',
+        lab_cifrado: {
+            descripcion: "Dado un mensaje y una clave del mismo tamaño, cifra el mensaje usando One-Time Pad.",
+            parametros: [
+                ["mensaje", "str"],
+                ["clave", "str"],
+            ],
+            salida: "str",
+            ejemplos: [
+                {
+                    parametros: ["HELLO", "XMCKL"],
+                    resultados: "EQNVZ"
+                },
+                {
+                    parametros: ["ONE TIME PAD", "SECRETSECRET"],
+                    resultados: "GZX DVQQ ZTL"
+                },
+                {
+                    parametros: ["ABC", "XYZ"],
+                    resultados: "XZB"
+                },
+                {
+                    parametros: ["CRYPTO", "RANDOM"],
+                    resultados: "TYMWFD"
+                },
+                {
+                    parametros: ["ATTACK AT DAWN", "LEMONLEMONLE"],
+                    resultados: "LXFOPV EF RNHR"
+                }
+            ]
+        },
+        lab_descifrado: {
+            descripcion: "Dado un mensaje cifrado en letras y la misma clave, recupera el original usando One-Time Pad.",
+            parametros: [
+                ["cifrado", "str"],
+                ["clave", "str"],
+            ],
+            salida: "str",
+            ejemplos: [
+                {
+                    parametros: ["EQNVZ", "XMCKL"],
+                    resultados: "HELLO"
+                },
+                {
+                    parametros: ["GZX DVQQ ZTL", "SECRETSECRET"],
+                    resultados: "ONE TIME PAD"
+                },
+                {
+                    parametros: ["XZB", "XYZ"],
+                    resultados: "ABC"
+                },
+                {
+                    parametros: ["TYMWFD", "RANDOM"],
+                    resultados: "CRYPTO"
+                },
+                {
+                    parametros: ["LXFOPV EF RNHR", "LEMONLEMONLE"],
+                    resultados: "ATTACK AT DAWN"
+                }
+            ]
+        }
     },
     'playfair': {
         nombre: 'Playfair',
@@ -25,7 +86,7 @@ export const metodos = {
             descripcion: "Dada una clave k, cifra el texto desplazando k caracteres.",
             parametros: [
                 ["k", "int"],
-                ["texto", "str"],
+                ["mensaje", "str"],
             ],
             salida: "str",
             ejemplos: [
@@ -55,7 +116,7 @@ export const metodos = {
             descripcion: "Dada una clave k, descifra el texto retrocediendo k caracteres.",
             parametros: [
                 ["k", "int"],
-                ["texto", "str"],
+                ["cifrado", "str"],
             ],
             salida: "str",
             ejemplos: [

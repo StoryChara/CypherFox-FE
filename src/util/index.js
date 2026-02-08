@@ -15,7 +15,7 @@ export const items = [
         bgColor: '#0A0A13',
         textColor: '#F9F4F4',
         links: [
-            { label: 'OTP', href: '/metodos/otp' },
+            { label: 'OTP', href: '/metodos/one-time-pad' },
             { label: 'Playfair', href: '/metodos/playfair' },
             { label: 'Caesar', href: '/metodos/caesar' },
             { label: 'Más Métodos', href: '/metodos' }

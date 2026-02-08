@@ -1,4 +1,52 @@
-export const missions_caesar = [
+const missions_one_time_pad = [
+    {
+        id: 1,
+        title: "Misión 1 · XOR bit a bit",
+        description:
+            "Cifra en binario usando One-Time Pad. Si M = 1011 y K = 0110, ¿cuál es el cifrado C = M ⊕ K?",
+        answer: "1101",
+        hint:
+            "Aplica XOR bit a bit: 1⊕0, 0⊕1, 1⊕1, 1⊕0. Recuerda la tabla: 0⊕0=0, 0⊕1=1, 1⊕0=1, 1⊕1=0."
+    },
+    {
+        id: 2,
+        title: "Misión 2 · Recupera el mensaje",
+        description:
+            "Sabemos que se cifró con OTP binario y que la clave era K = 1001. Si el cifrado es C = 0110, ¿cuál era el mensaje M original?",
+        answer: "1111",
+        hint:
+            "En OTP, descifrar también es XOR: M = C ⊕ K. Aplica XOR bit a bit entre 0 1 1 0 y 1 0 0 1."
+    },
+    {
+        id: 3,
+        title: "Misión 3 · OTP con letras",
+        description:
+            "Usamos el alfabeto inglés y un One-Time Pad en letras. Si el mensaje es HELLO y la clave es XMCKL, ¿qué cifrado obtienes? Escribe la respuesta en mayúsculas.",
+        answer: "EQNVZ",
+        hint:
+            "Convierte cada letra a número, suma mensaje+clave módulo 26 y vuelve a letras. Por ejemplo H=7, X=23, 7+23=30≡4 → E."
+    },
+    {
+        id: 4,
+        title: "Misión 4 · ¿Qué tan larga debe ser la clave?",
+        description:
+            "Quieres cifrar un mensaje de 20 letras con One-Time Pad alfabético. ¿Cuántas letras debe tener como mínimo la clave K para que el sistema sea realmente un \"pad de un solo uso\"?",
+        answer: "20",
+        hint:
+            "En OTP la clave debe ser al menos tan larga como el mensaje, porque cada posición del mensaje usa una posición distinta de K."
+    },
+    {
+        id: 5,
+        title: "Misión 5 · ¿Qué hace tan especial al OTP?",
+        description:
+            "Responde con una palabra: ¿cómo se llama el tipo de seguridad que tiene el One-Time Pad cuando se usa con una clave realmente aleatoria, tan larga como el mensaje y de un solo uso?",
+        answer: "perfecta",
+        hint:
+            "Shannon demostró que el OTP tiene seguridad \"informacionalmente perfecta\". Busca la palabra clave: seguridad ______."
+    }
+];
+
+const missions_caesar = [
     {
         id: 1,
         title: "Misión 1 · Descubre la clave",
@@ -63,3 +111,16 @@ export const missions_caesar = [
             "El número de claves posibles siempre coincide con el tamaño del alfabeto que estás usando. (Usando alfabeto inglés)",
     },
 ];
+
+export const methodMissionsConfig = {
+    "one-time-pad": {
+        missions: missions_one_time_pad,
+        title: "Misiones · One-Time Pad",
+        description: "Pon a prueba tus conocimientos sobre el One-Time Pad con estas misiones. Cada misión te desafiará a aplicar lo que has aprendido sobre este método de cifrado, desde operaciones bit a bit hasta conceptos clave de seguridad. ¡Acepta el reto y demuestra tu maestría en criptografía!"
+    },
+    "caesar": {
+        missions: missions_caesar,
+        title: "Misiones · César",
+        description: "Desafía tu comprensión del cifrado César con estas misiones. Cada misión te llevará a explorar diferentes aspectos de este método clásico, desde descubrir claves hasta entender su funcionamiento con distintos alfabetos. ¡Acepta el reto y demuestra tu habilidad para descifrar mensajes secretos!"
+    }
+}

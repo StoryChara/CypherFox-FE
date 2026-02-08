@@ -1,3 +1,5 @@
+/* ---------- PÁGINA LECCIÓN + FONDO ---------- */
+
 .cf-lesson-page {
   background-color: var(--cf-bg);
   min-height: 100vh;
@@ -25,44 +27,40 @@
   inset: 0;
   background: #06040E;
   opacity: 0.75;
-  /* aquí controlas qué tan oscuro se ve */
+  /* control de oscuridad */
 }
+
+/* CONTENIDO DE LA LECCIÓN + MISIONES + BOTÓN LAB */
 
 .cf-lesson-content {
   position: relative;
   z-index: 1;
   padding: 3rem 1.5rem 4rem;
-
   display: flex;
   flex-direction: column;
-  align-items: center; /* <- centra horizontalmente los hijos inline/block */
-  gap: 2rem;           /* separación entre contenido y botón */
+  gap: 2.5rem;
 }
 
+/* El botón al lab sí se centra dentro del flujo */
 .cf-lesson-link-lab {
+  align-self: center;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-
   padding: 0.7rem 1.4rem;
   border-radius: 999px;
   background: rgba(19, 130, 69, 0.4);
   color: var(--cf-text);
   border: 1px solid rgba(19, 130, 69, 0.75);
-
-  font-family: 'PT Sans', system-ui, sans-serif;
+  font-family: "PT Sans", system-ui, sans-serif;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   text-decoration: none;
-
   text-shadow: 0 0 6px rgba(249, 244, 244, 0.45);
-
   box-shadow:
     0 0 12px rgba(19, 130, 69, 0.35),
     0 0 24px rgba(6, 4, 14, 0.9);
-
   cursor: pointer;
-
   transition:
     background 0.18s ease-out,
     color 0.18s ease-out,
@@ -83,11 +81,9 @@
   background: rgba(19, 130, 69, 0.32);
   border-color: var(--cf-green);
   transform: translateY(-1px) scale(1.02);
-
   box-shadow:
     0 0 16px rgba(19, 130, 69, 0.6),
     0 0 32px rgba(231, 143, 65, 0.4);
-
   text-shadow: 0 0 8px rgba(249, 244, 244, 0.75);
 }
 
@@ -103,4 +99,276 @@
   box-shadow:
     0 0 8px rgba(19, 130, 69, 0.5),
     0 0 18px rgba(6, 4, 14, 0.9);
+}
+
+/* ---------- BLOQUE COMÚN DE MISIONES ---------- */
+
+/* Contenedor de la banda de misiones (para todos los métodos) */
+.missions-band {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 1.2rem;
+}
+
+/* Encabezado de misiones */
+.missions-header {
+  background-color: rgba(6, 4, 14, 0.8);
+  box-shadow: 0 0 10px 15px rgba(6, 4, 14, 0.75);
+  border-radius: 1.6rem;
+  padding: 1.4rem 1.3rem 1.5rem;
+}
+
+.missions-header p {
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+/* Lista de pills de misiones */
+.missions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.mission-pill {
+  border-radius: 999px;
+  border: 1px solid rgba(231, 143, 65, 0.6);
+  background-color: transparent;
+  color: var(--cf-text);
+  font-size: 0.8rem;
+  padding: 0.2rem 0.9rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    transform 0.12s ease,
+    box-shadow 0.15s ease,
+    color 0.15s ease;
+}
+
+.mission-pill:hover {
+  background-color: rgba(231, 143, 65, 0.85);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0.5rem 0.1rem rgba(231, 142, 65, 0.5);
+}
+
+.mission-pill-active {
+  background-color: var(--cf-orange);
+  color: #06040e;
+}
+
+/* Tarjeta de la misión seleccionada */
+.mission-card {
+  border-radius: 1.4rem;
+  padding: 1rem 1.2rem;
+  background-color: rgba(6, 4, 14, 0.95);
+  box-shadow: 0 0 10px 15px rgba(6, 4, 14, 0.9);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.7s ease-out forwards;
+  animation-delay: 0.4s;
+  margin: 3rem 0 0;
+}
+
+.mission-card h3 {
+  margin-bottom: 0.4rem;
+}
+
+.mission-card .form-answer {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.7rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(231, 143, 65, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: var(--cf-text);
+}
+
+.mission-card .form-answer:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(231, 142, 65, 0.6);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(231, 142, 65, 0.75);
+}
+
+/* Feedback correcto / incorrecto en el modal de misiones */
+.mission-correct,
+.mission-incorrect {
+  margin-top: 0.8rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.6rem;
+}
+
+.mission-correct {
+  background-color: rgba(19, 130, 69, 0.25);
+  border: 1px solid rgba(19, 130, 69, 0.7);
+  color: #c5f7da;
+}
+
+.mission-incorrect {
+  background-color: rgba(231, 143, 65, 0.15);
+  border: 1px solid rgba(231, 143, 65, 0.6);
+  color: rgba(249, 244, 244, 0.9);
+}
+
+.mission-feedback {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+}
+
+.mission-feedback p {
+  align-self: center;
+  font-size: 1.2rem;
+}
+
+.mission-mascot {
+  max-width: 20vh;
+  flex-shrink: 0;
+  pointer-events: none;
+  align-self: center;
+}
+
+/* ---------- MODAL COMPARTIDO (resultados y ayudas) ---------- */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(6, 4, 14, 0.5) !important;
+  backdrop-filter: blur(0.5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  overflow: auto;
+  animation: backdropFade 0.2s ease-out;
+}
+
+.modal-content {
+  max-width: 75%;
+  max-height: 75vh;
+  background-color: rgb(6, 4, 14) !important;
+  border-radius: 2rem !important;
+  border: 1px solid rgba(231, 143, 65, 0.6);
+  padding: 1.4rem 1.6rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  animation: modalPop 0.25s ease-out;
+}
+
+/* Scrollbar discreto */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: rgba(231, 143, 65, 0.4);
+  border-radius: 999px;
+}
+
+.modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(231, 143, 65, 0.4) transparent;
+}
+
+.modal-header-with-fox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.modal-mascot {
+  max-width: 15vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.close-button {
+  margin-top: 0.9rem;
+  border: none;
+  background-color: var(--cf-orange);
+  color: #06040e;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease,
+    box-shadow 0.15s ease;
+}
+
+.close-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0.4rem 0.1rem rgba(231, 143, 65, 0.5);
+}
+
+/* ---------- ANIMACIONES GENERALES ---------- */
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes backdropFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---------- RESPONSIVO PARA LA PÁGINA DE MÉTODOS ---------- */
+
+@media (max-width: 576px) {
+  .cf-lesson-content {
+    padding: 2.4rem 1rem 3rem;
+  }
+
+  .missions-band {
+    width: 90%;
+  }
+
+  .modal-content {
+    max-width: 90%;
+    max-height: 80vh;
+  }
 }

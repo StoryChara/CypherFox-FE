@@ -10,10 +10,7 @@ import Disk from "../../../assets/caesar-disk.png";
 import Welcome from "../../../assets/welcome.gif";
 import Study from "../../../assets/study.gif";
 import Help from "../../../assets/help.gif";
-import Happy from "../../../assets/happy.gif";
-import Sad from "../../../assets/sad.gif";
 
-import { missions_caesar as missions } from "../../../util/missions";
 
 import DecryptedText from "../../../components/text/DecryptedText";
 import TextType from "../../../components/text/TextType";
@@ -25,10 +22,6 @@ function Caesar() {
     const [shift, setShift] = useState(7);
     const [plainText, setPlainText] = useState("CAESAR");
     const [showMathHelp, setShowMathHelp] = useState(false);
-    const [activeMission, setActiveMission] = useState(1);
-    const [missionTitleKey, setMissionTitleKey] = useState(0);
-    const [answer, setAnswer] = useState("");
-    const [modalAnswer, setModalAnswer] = useState(false);
 
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const n = alphabet.length;
@@ -43,8 +36,6 @@ function Caesar() {
         .split("")
         .map((ch) => encodeChar(ch, shift))
         .join("");
-
-    const currentMission = missions.find((m) => m.id === activeMission);
 
     // ---------- REFS PARA GSAP ----------
     const heroRef = useRef(null);
@@ -583,165 +574,6 @@ function Caesar() {
                         </div>
                     </div>
                 )}
-
-                {/* BLOQUE DE MISIONES / ACTIVIDADES RÁPIDAS */}
-                <section className="caesar-band caesar-missions">
-                    <div className="missions-header">
-                        <h2>
-                            <DecryptedText
-                                text="Desafíos rápidos"
-                                className="h2"
-                                encryptedClassName="h2 text-encrypted"
-                                speed={100}
-                                maxIterations={60}
-                            />
-                        </h2>
-                        <div>
-                            <TextType
-                                text={`Completa estas pequeñas misiones usando el disco y el cifrador. Así conectas la idea de “girar el alfabeto” con pensar como criptógrafo.`}
-                                as="p"
-                                typingSpeed={25}
-                                deletingSpeed={65}
-                                pauseDuration={1800}
-                                textColors={["var(--cf-text)"]}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="missions-grid">
-                        {missions.map((mission) => (
-                            <button
-                                key={mission.id}
-                                type="button"
-                                className={
-                                    "mission-pill" +
-                                    (mission.id === activeMission ? " mission-pill-active" : "")
-                                }
-                                onClick={() => {
-                                    setActiveMission(mission.id);
-                                    setMissionTitleKey((prev) => prev + 1);
-                                    setAnswer("");
-                                }}
-                            >
-                                {mission.title}
-                            </button>
-                        ))}
-                    </div>
-
-                    <div className="mission-card" ref={missionsCardRef}>
-                        <h3>
-                            <DecryptedText
-                                key={missionTitleKey}
-                                text={currentMission.title}
-                                className="h3"
-                                encryptedClassName="h3 text-encrypted"
-                                speed={100}
-                                maxIterations={60}
-                            />
-                        </h3>
-                        <div>
-                            <TextType
-                                key={missionTitleKey + "-desc"}
-                                text={currentMission.description}
-                                as="p"
-                                typingSpeed={15}
-                                deletingSpeed={65}
-                                pauseDuration={1800}
-                                textColors={["var(--cf-text)"]}
-                            />
-                        </div>
-
-                        <input
-                            type="text"
-                            className="form-answer"
-                            value={answer}
-                            onChange={(e) => setAnswer(e.target.value)}
-                            placeholder="Escribe tu respuesta aquí…"
-                        />
-
-                        <button
-                            type="button"
-                            className="close-button"
-                            onClick={() => {
-                                if (answer.trim() !== "") {
-                                    setModalAnswer(true);
-                                }
-                            }}
-                        >
-                            Comprobar
-                        </button>
-                    </div>
-                </section>
-
-                {modalAnswer && (
-                    <div
-                        className="modal-backdrop"
-                        onClick={() => setModalAnswer(false)}
-                    >
-                        <div
-                            className="modal-content"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <h3>
-                                <DecryptedText
-                                    text="Resultado de la misión"
-                                    className="h3"
-                                    encryptedClassName="h3 text-encrypted"
-                                    speed={120}
-                                    maxIterations={60}
-                                />
-                            </h3>
-
-                            {answer.trim().toUpperCase() ===
-                                currentMission.answer.toUpperCase() ? (
-                                <div className="mission-feedback mission-correct">
-                                    <img
-                                        src={Happy}
-                                        alt="CypherFox celebrando el acierto"
-                                        className="mission-mascot"
-                                    />
-                                    <div>
-                                        <TextType
-                                            text="¡Correcto! Has encontrado la respuesta esperada."
-                                            as="p"
-                                            typingSpeed={15}
-                                            deletingSpeed={65}
-                                            pauseDuration={1800}
-                                            textColors={["var(--cf-text)"]}
-                                        />
-                                    </div>
-                                </div>
-                            ) : (
-                                <div className="mission-feedback mission-incorrect">
-                                    <img
-                                        src={Sad}
-                                        alt="CypherFox pensativo mostrando un error"
-                                        className="mission-mascot"
-                                    />
-                                    <div>
-                                        <TextType
-                                            text={currentMission.hint}
-                                            as="p"
-                                            typingSpeed={15}
-                                            deletingSpeed={65}
-                                            pauseDuration={1800}
-                                            textColors={["var(--cf-text)"]}
-                                        />
-                                    </div>
-                                </div>
-                            )}
-
-                            <button
-                                type="button"
-                                className="close-button"
-                                onClick={() => setModalAnswer(false)}
-                            >
-                                Entendido
-                            </button>
-                        </div>
-                    </div>
-                )}
-
             </div>
         </div>
     );

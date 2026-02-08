@@ -46,7 +46,7 @@ export default function Lab() {
     # TODO: Implementar lógica de descifrado
     return 'MENSAJE DESCIFRADO'`;
 
-    const [userCode, setUserCode] = useState(`${encryptCode}\n\n${decryptCode}`);
+    const [userCode, setUserCode] = useState(`# USA EL ALFABETO INGLES EN MAYUSCULAS\n\n${encryptCode}\n\n${decryptCode}`);
     const [confirmOpen, setConfirmOpen] = useState(false);
     const [waitingOpen, setWaitingOpen] = useState(false);
     const [resultOpen, setResultOpen] = useState(false);
