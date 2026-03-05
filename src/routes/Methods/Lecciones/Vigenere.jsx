@@ -184,10 +184,14 @@ function Vigenere() {
                     <div className="hero-copy">
                         <span className="hero-badge">Lección · Cifrado polialfabético</span>
                         <h1 className="hero-copy-tittle">
-                            <DecryptedText text="Cifrado de" />{" "}
-                            <span className="hero-copy-tittle-encrypted">
-                                <DecryptedText text="Vigenère" />
-                            </span>
+                            Juega con el{" "}
+                            <DecryptedText
+                                text="Cifrado Vigenère"
+                                className="hero-copy-tittle"
+                                encryptedClassName="hero-copy-tittle text-encrypted"
+                                speed={120}
+                                maxIterations={60}
+                            />
                         </h1>
                         <TextType
                             as="p"
@@ -228,7 +232,13 @@ function Vigenere() {
                             <div className="lab-header-row">
                                 <div>
                                     <h2>
-                                        <DecryptedText text="El tablero de Vigenère" />
+                                        <DecryptedText
+                                            text="El tablero de Vigenère"
+                                            className="h2"
+                                            encryptedClassName="h2 text-encrypted"
+                                            speed={120}
+                                            maxIterations={60}
+                                        />
                                     </h2>
                                     <p className="lab-subtitle">
                                         La <strong>Tabula Recta</strong> es una tabla 26×26 donde cada fila
@@ -333,7 +343,15 @@ function Vigenere() {
 
                         {/* Historia Flotante */}
                         <aside className="history-floating">
-                            <h3>🔐 La Máquina Enigma</h3>
+                            <h3>
+                                <DecryptedText
+                                    text="La Máquina Enigma"
+                                    className="h3"
+                                    encryptedClassName="h3 text-encrypted"
+                                    speed={120}
+                                    maxIterations={60}
+                                />
+                            </h3>
                             <p>
                                 El cifrado de Vigenère fue considerado "indescifrable" durante siglos.
                                 Su principio polialfabético inspiró directamente a la Máquina Enigma,
@@ -359,7 +377,15 @@ function Vigenere() {
                         <div className="card-free math-card" ref={mathCardRef}>
                             <div className="math-header-row">
                                 <div className="math-header-text">
-                                    <h2>La regla matemática</h2>
+                                    <h2>
+                                        <DecryptedText
+                                            text="La regla matemática"
+                                            className="h2"
+                                            encryptedClassName="h2 text-encrypted"
+                                            speed={120}
+                                            maxIterations={60}
+                                        />
+                                    </h2>
                                 </div>
                                 <button
                                     className="math-help-button"
@@ -431,7 +457,13 @@ function Vigenere() {
                         {/* ── GAME CARD ── */}
                         <div className="card-free game-card" ref={gameCardRef}>
                             <h2>
-                                <DecryptedText text="Cifra tu mensaje secreto" />
+                                <DecryptedText
+                                    text="Cifra tu mensaje secreto"
+                                    className="h2"
+                                    encryptedClassName="h2 text-encrypted"
+                                    speed={120}
+                                    maxIterations={60}
+                                />
                             </h2>
                             <TextType
                                 as="p"
@@ -539,7 +571,8 @@ function Vigenere() {
                         onClick={(e) => e.stopPropagation()}
                     >
                         <div className="modal-header-with-fox">
-                            <h3>🔐 La Máquina Enigma y la herencia de Vigenère</h3>
+                            <h3>
+                                La Máquina Enigma y la herencia de Vigenère</h3>
                             <img
                                 src={HelpGif}
                                 alt="Mascota ayuda"

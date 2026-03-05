@@ -4,8 +4,9 @@ import { useParams, Navigate, Link } from "react-router-dom";
 
 import Hyperspeed from "../../components/bg/Hyperspeed";
 
-import Caesar from "../Methods/Lecciones/Caesar";
 import OneTimePad from "../Methods/Lecciones/OneTimePad";
+import Playfair from "../Methods/Lecciones/Playfair";
+import Caesar from "../Methods/Lecciones/Caesar";
 import Vigenere from "../Methods/Lecciones/Vigenere";
 
 import DecryptedText from "../../components/text/DecryptedText";
@@ -21,7 +22,8 @@ import "./Metodos.css";
 const lessonsMap = {
     "one-time-pad": OneTimePad,
     caesar: Caesar,
-    vigenere: Vigenere
+    vigenere: Vigenere,
+    playfair: Playfair
 };
 
 const HYPERSPEED_OPTIONS = {

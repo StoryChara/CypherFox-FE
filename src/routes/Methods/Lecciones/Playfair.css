@@ -1,11 +1,14 @@
 /* =========================================================
-   routes/Methods/Lecciones/Vigenere.css
-   CypherFox – Cifrado de Vigenère
-   Sigue la misma arquitectura visual de Caesar.css y OneTimePad.css
+   routes/Methods/Lecciones/Playfair.css
+   CypherFox – Cifrado de Playfair
+   Sigue la misma arquitectura visual de Caesar.css y Vigenere.css
    ========================================================= */
 
-/* ---------PÁGINA VIGENÈRE --------- */
-.vigenere-page {
+/* =========================================================
+   PÁGINA PLAYFAIR
+   ========================================================= */
+
+.playfair-page {
     padding: 3rem 0 0;
 }
 
@@ -13,14 +16,15 @@
     color: var(--cf-green) !important;
 }
 
-.vigenere-shell {
+.playfair-shell {
     position: relative;
 }
 
 /* =========================================================
    HERO
    ========================================================= */
-.vigenere-hero {
+
+.playfair-hero {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
     gap: 2rem;
@@ -53,16 +57,9 @@
     margin-bottom: 0.65rem;
 }
 
-.herocopy p {
+.hero-copy p {
     font-size: 0.95rem;
     margin-top: 0.6rem;
-}
-
-.hero-cta {
-    margin-top: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
 }
 
 /* Hero visual */
@@ -145,6 +142,7 @@
 /* =========================================================
    ANIMACIONES HERO
    ========================================================= */
+
 @keyframes heroPulse {
     0% {
         transform: scale(1);
@@ -207,13 +205,15 @@
 /* =========================================================
    FRANJAS GENERALES
    ========================================================= */
-.vigenere-band {
+
+.playfair-band {
     margin-bottom: 3rem;
 }
 
 /* =========================================================
    BANDA 1: Laboratorio + Historia flotante
    ========================================================= */
+
 .band-lab .band-lab-inner {
     position: relative;
     background-color: rgba(6, 4, 14, 0.98);
@@ -226,7 +226,7 @@
     animation-delay: 0.1s;
 }
 
-.band-lab-inner::before {
+.band-lab .band-lab-inner::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -238,7 +238,7 @@
     z-index: 0;
 }
 
-.band-lab-inner>* {
+.band-lab .band-lab-inner>*:not(.history-floating) {
     position: relative;
     z-index: 1;
 }
@@ -253,7 +253,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 1rem;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 0.9rem;
 }
 
@@ -263,43 +263,68 @@
     margin-top: 0.25rem;
 }
 
+/* Keyword input inside lab */
+.lab-keyword-input label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    gap: 0.3rem;
+}
+
+.lab-keyword-input .form-control {
+    margin-top: 0.3rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(231, 143, 65, 0.5);
+    color: var(--cf-text);
+    padding: 0.3rem 0.6rem;
+}
+
+.lab-keyword-input .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(231, 142, 65, 0.6);
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--cf-text);
+    border-color: rgba(231, 142, 65, 0.75);
+}
+
 /* =========================================================
-   VIGENÈRE TABLEAU (tabla de Vigenère / Tabula Recta)
+   MATRIZ PLAYFAIR 5×5
    ========================================================= */
-.vigenere-tableau-wrapper {
+
+.playfair-matrix-wrapper {
     margin-top: 1.2rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
 
-/* Scrollbar discreto en el tableau */
-.vigenere-tableau-wrapper::-webkit-scrollbar {
+.playfair-matrix-wrapper::-webkit-scrollbar {
     height: 5px;
 }
 
-.vigenere-tableau-wrapper::-webkit-scrollbar-track {
+.playfair-matrix-wrapper::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.vigenere-tableau-wrapper::-webkit-scrollbar-thumb {
+.playfair-matrix-wrapper::-webkit-scrollbar-thumb {
     background-color: rgba(231, 143, 65, 0.35);
     border-radius: 999px;
 }
 
-.vigenere-tableau-wrapper {
+.playfair-matrix-wrapper {
     scrollbar-width: thin;
     scrollbar-color: rgba(231, 143, 65, 0.35) transparent;
 }
 
-.vigenere-tableau {
+.playfair-matrix {
     border-collapse: separate;
-    border-spacing: 3px;
+    border-spacing: 4px;
     font-family: "Fira Code", ui-monospace, monospace;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     margin: 0 auto;
 }
 
-.tableau-header-cell {
+.matrix-header-cell {
     color: var(--cf-orange);
     font-weight: 700;
     padding: 0.3rem 0.4rem;
@@ -309,106 +334,111 @@
     letter-spacing: 0.05em;
 }
 
-.tableau-cell {
-    width: 28px;
-    height: 28px;
+.matrix-cell {
+    width: 36px;
+    height: 36px;
     text-align: center;
     vertical-align: middle;
     border-radius: 6px;
     background-color: rgba(6, 4, 14, 0.8);
     border: 1px solid rgba(231, 143, 65, 0.12);
     color: var(--cf-text);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-family: "Fira Code", ui-monospace, monospace;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease,
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease,
         border-color 0.2s ease;
+    cursor: default;
 }
 
-.tableau-cell-active-row {
-    background-color: rgba(231, 143, 65, 0.18);
+.matrix-cell:hover {
+    transform: scale(1.12);
+    background-color: rgba(231, 143, 65, 0.15);
     border-color: rgba(231, 143, 65, 0.5);
+    box-shadow: 0 0 0.4rem 0.1rem rgba(231, 143, 65, 0.4);
 }
 
-.tableau-cell-active-col {
-    background-color: rgba(19, 130, 69, 0.18);
-    border-color: rgba(19, 130, 69, 0.5);
-}
-
-.tableau-cell-highlight {
+.matrix-cell-highlight-plain {
     background-color: var(--cf-orange) !important;
     color: #06040e !important;
     font-weight: 700;
     border-color: var(--cf-orange);
-    transform: scale(1.15);
+    transform: scale(1.1);
     box-shadow: 0 0 0.5rem 0.15rem rgba(231, 143, 65, 0.6);
     z-index: 2;
     position: relative;
 }
 
+.matrix-cell-highlight-cipher {
+    background-color: var(--cf-green) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    border-color: var(--cf-green);
+    transform: scale(1.1);
+    box-shadow: 0 0 0.5rem 0.15rem rgba(19, 130, 69, 0.6);
+    z-index: 2;
+    position: relative;
+}
+
 /* =========================================================
-   KEY CYCLING DISPLAY
+   DÍGRAFO ACTIVO
    ========================================================= */
-.key-cycling-display {
-    margin-top: 1.2rem;
-    font-family: "Fira Code", ui-monospace, monospace;
-}
 
-.key-cycling-display .key-row {
+.digraph-display {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 4px;
     align-items: center;
+    gap: 0.7rem;
+    margin-top: 1.1rem;
+    flex-wrap: wrap;
 }
 
-.key-row-label {
-    font-size: 0.72rem;
+.digraph-label {
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(249, 244, 244, 0.55);
-    min-width: 80px;
+    color: rgba(249, 244, 244, 0.6);
 }
 
-.key-letter-box {
-    width: 30px;
-    height: 30px;
+.digraph-pair {
+    display: flex;
+    gap: 4px;
+}
+
+.digraph-letter {
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    font-family: "Fira Code", ui-monospace, monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
-.key-letter-box.plain {
-    background-color: rgba(249, 244, 244, 0.07);
-    border: 1px solid rgba(249, 244, 244, 0.2);
-    color: var(--cf-text);
-}
-
-.key-letter-box.key {
-    background-color: rgba(231, 143, 65, 0.12);
-    border: 1px solid rgba(231, 143, 65, 0.45);
+.digraph-letter.plain {
+    background-color: rgba(231, 143, 65, 0.15);
+    border: 1px solid rgba(231, 143, 65, 0.5);
     color: var(--cf-orange);
 }
 
-.key-letter-box.cipher {
-    background-color: rgba(19, 130, 69, 0.12);
+.digraph-letter.cipher {
+    background-color: rgba(19, 130, 69, 0.15);
     border: 1px solid rgba(19, 130, 69, 0.5);
     color: #3ecf80;
 }
 
-.key-letter-box.space {
-    background-color: transparent;
-    border: 1px dashed rgba(249, 244, 244, 0.1);
-    color: rgba(249, 244, 244, 0.3);
-    font-size: 0.65rem;
+.digraph-arrow {
+    font-size: 1.1rem;
+    color: rgba(249, 244, 244, 0.5);
 }
 
 /* =========================================================
    HISTORIA FLOTANTE
    ========================================================= */
+
 .history-floating {
     position: absolute;
     right: 1.4rem;
@@ -434,6 +464,7 @@
 /* =========================================================
    BANDA INFERIOR: Pizarra matemática + Juego
    ========================================================= */
+
 .band-bottom .band-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
@@ -475,6 +506,7 @@
 /* =========================================================
    CONTROLES DE EJEMPLO (inputs y resultados)
    ========================================================= */
+
 .example-controls {
     display: flex;
     flex-wrap: wrap;
@@ -542,6 +574,7 @@
 /* =========================================================
    PIZARRA MATEMÁTICA
    ========================================================= */
+
 .math-header-row {
     display: flex;
     align-items: center;
@@ -564,8 +597,11 @@
     font-size: 0.8rem;
     cursor: pointer;
     white-space: nowrap;
-    transition: background-color 0.15s ease, transform 0.12s ease,
-        box-shadow 0.15s ease, color 0.15s ease;
+    transition:
+        background-color 0.15s ease,
+        transform 0.12s ease,
+        box-shadow 0.15s ease,
+        color 0.15s ease;
 }
 
 .math-help-button:hover {
@@ -601,8 +637,9 @@
 }
 
 /* =========================================================
-   MODAL (backdrop, contenido, scrollbar, botón)
+   MODAL (backdrop, contenido, scrollbar, botones)
    ========================================================= */
+
 .modal-backdrop {
     position: fixed;
     inset: 0;
@@ -671,8 +708,11 @@
     border-radius: 999px;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: background-color 0.15s ease, color 0.15s ease,
-        transform 0.12s ease, box-shadow 0.15s ease;
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.12s ease,
+        box-shadow 0.15s ease;
 }
 
 .close-button:hover {
@@ -683,6 +723,7 @@
 /* =========================================================
    ANIMACIONES GENERALES DE APARICIÓN
    ========================================================= */
+
 @keyframes fadeUp {
     0% {
         opacity: 0;
@@ -733,7 +774,7 @@
 
 /* Tableta: hero a 1 columna, grids a 1 columna */
 @media (max-width: 992px) {
-    .vigenere-hero {
+    .playfair-hero {
         grid-template-columns: minmax(0, 1fr);
     }
 
@@ -752,7 +793,7 @@
 
 /* Móvil */
 @media (max-width: 576px) {
-    .vigenere-page {
+    .playfair-page {
         padding: 2.4rem 0 3rem;
     }
 
@@ -773,39 +814,30 @@
         max-height: 80vh;
     }
 
-    .vigenere-tableau {
+    .playfair-matrix {
         font-size: 0.65rem;
     }
 
-    .tableau-cell {
-        width: 22px;
-        height: 22px;
+    .matrix-cell {
+        width: 28px;
+        height: 28px;
         font-size: 0.62rem;
         border-radius: 4px;
     }
 
-    .tableau-header-cell {
+    .matrix-header-cell {
         font-size: 0.65rem;
         padding: 0.2rem 0.3rem;
     }
 
-    .key-letter-box {
+    .digraph-letter {
         width: 26px;
         height: 26px;
         font-size: 0.75rem;
-    }
-
-    .key-row-label {
-        min-width: 64px;
-        font-size: 0.65rem;
     }
 
     .math-help-button {
         font-size: 0.75rem;
         padding: 0.2rem 0.65rem;
     }
-}
-
-.text-encrypted {
-    color: var(--cf-green) !important;
 }

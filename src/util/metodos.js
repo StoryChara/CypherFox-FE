@@ -40,10 +40,41 @@ export const metodos = {
     },
     'playfair': {
         nombre: 'Playfair',
+        clave: 'playfair',
         descripcion_corta: 'Cifrado con una matriz de 5x5.',
-        descripcion: 'Cifrado de sustitución por pares de letras usando una matriz de 5x5 construida con una palabra clave. Aplica reglas según filas, columnas o rectángulos para transformar los dígitos. Fue utilizado históricamente en comunicaciones militares y diplomáticas.',
+        descripcion: 'Cifrado de sustitución por pares de letras usando una matriz de 5×5 construida a partir de una palabra clave. Antes de cifrar se preparan los dígrafos (J→I, insertar X entre letras iguales en un par y añadir X si queda una letra suelta). Se aplican reglas distintas según si las letras comparten fila, columna o forman un rectángulo.',
         href: '/metodos/playfair',
-        icono: 'fa-solid fa-table-cells'
+        icono: 'fa-solid fa-table-cells',
+        lab_cifrado: {
+            descripcion: "Dado un mensaje y una clave del mismo tamaño, cifra el mensaje usando Playfair.",
+            parametros: [
+                ["mensaje", "str"],
+                ["clave", "str"]
+            ],
+            salida: "str",
+            ejemplos: [
+                { parametros: ["HELLO", "PLAYFAIR"], resultados: "KGYVRV" },
+                { parametros: ["LA", "PLAYFAIR"], resultados: "AY" },
+                { parametros: ["PI", "PLAYFAIR"], resultados: "IE" },
+                { parametros: ["BALLOON", "PLAYFAIR"], resultados: "HBYVRVQO" },
+                { parametros: ["JAVA", "PLAYFAIR"], resultados: "BPWL" }
+            ]
+        },
+        lab_descifrado: {
+            descripcion: "Dado un mensaje cifrado en letras y la misma clave, recupera el original usando Playfair.",
+            parametros: [
+                ["cifrado", "str"],
+                ["clave", "str"]
+            ],
+            salida: "str",
+            ejemplos: [
+                { parametros: ["KGYVRV", "PLAYFAIR"], resultados: "HELXLO" },
+                { parametros: ["AY", "PLAYFAIR"], resultados: "LA" },
+                { parametros: ["IE", "PLAYFAIR"], resultados: "PI" },
+                { parametros: ["HBYVRVQO", "PLAYFAIR"], resultados: "BALXLOON" },
+                { parametros: ["BPWL", "PLAYFAIR"], resultados: "IAVA" }
+            ]
+        }
     },
     'caesar': {
         nombre: 'Caesar',

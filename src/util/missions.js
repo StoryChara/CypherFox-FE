@@ -46,6 +46,63 @@ const missions_one_time_pad = [
     }
 ];
 
+const missions_playfair = [
+    {
+        id: 1,
+        title: "Misión 1 · Preparación del texto",
+        description:
+            "Antes de cifrar, el texto debe dividirse en pares de letras. Si dos letras iguales quedan juntas en un par, se inserta una X entre ellas. Si al final queda una letra sola, también se añade una X. ¿Cuál es el texto preparado de HELLO?",
+        answer: "HELXLO",
+        hint:
+            "Revisa la regla de preparación del texto en la lección: ¿qué ocurre exactamente cuando dos letras iguales forman un par?",
+    },
+    {
+        id: 2,
+        title: "Misión 2 · Construir la matriz",
+        description:
+            "La clave define el orden de la matriz 5×5. Se escribe la clave sin repetir letras (tratando J como I) y luego se completa con el resto del alfabeto. Con la clave CRYPTO, ¿qué letra ocupa la fila 2, columna 3?",
+        answer: "B",
+        hint:
+            "Introduce la clave CRYPTO en la herramienta de laboratorio de la lección y cuenta tú mismo las filas y columnas.",
+    },
+    {
+        id: 3,
+        title: "Misión 3 · Regla de fila",
+        description:
+            "Cuando las dos letras de un dígrafo están en la misma fila de la matriz, cada una se sustituye por la letra que está inmediatamente a su derecha (de forma circular). Con la clave PLAYFAIR, cifra el dígrafo LA.",
+        answer: "AY",
+        hint:
+            "Cuando dos letras comparten fila, ¿en qué dirección se desplazan? Prueba el cifrador con LA y PLAYFAIR para verificar tu razonamiento.",
+    },
+    {
+        id: 4,
+        title: "Misión 4 · Regla de columna",
+        description:
+            "Cuando las dos letras de un dígrafo comparten la misma columna de la matriz, cada una se sustituye por la letra que está inmediatamente debajo (de forma circular). Con la clave PLAYFAIR, cifra el dígrafo PI.",
+        answer: "IE",
+        hint:
+            "Localiza P e I en la matriz de la lección y comprueba si comparten columna. Luego aplica la dirección que indica la regla de columna.",
+    },
+    {
+        id: 5,
+        title: "Misión 5 · Regla de rectángulo",
+        description:
+            "Cuando las letras de un dígrafo están en filas y columnas distintas, forman las esquinas de un rectángulo en la matriz. Cada letra se sustituye por la que está en su misma fila pero en la columna de la otra. Con la clave PLAYFAIR, cifra el dígrafo AR.",
+        answer: "LB",
+        hint:
+            "Imagina el rectángulo que forman A y R en la matriz: cada una viaja a la esquina opuesta de su misma fila. La sección de reglas geométricas de la lección te muestra exactamente cómo funciona ese intercambio.",
+    },
+    {
+        id: 6,
+        title: "Misión 6 · I y J comparten celda",
+        description:
+            "El alfabeto de Playfair tiene solo 25 letras porque I y J ocupan la misma celda. Antes de preparar cualquier mensaje, todas las J se convierten en I. Si el mensaje es JAVA, ¿cuál es el texto preparado tras aplicar la sustitución J→I y las reglas de dígrаfos?",
+        answer: "IAVA",
+        hint:
+            "Recuerda que hay dos pasos antes de dividir en pares: uno es exclusivo del alfabeto de 25 letras de Playfair. ¿Los has aplicado ambos antes de revisar los pares?",
+    }
+];
+
 const missions_caesar = [
     {
         id: 1,
@@ -184,5 +241,10 @@ export const methodMissionsConfig = {
         missions: missions_vigenere,
         title: "Misiones · Vigenère",
         description: "Pon a prueba tus conocimientos sobre el cifrado de Vigenère con estas misiones. Cada desafío te llevará a cifrar, descifrar y analizar mensajes usando claves cíclicas, desde operaciones básicas hasta conceptos clave del criptoanálisis polialfabético. ¡Demuestra que dominas la Tabula Recta!"
-    }
+    },
+    "playfair": {
+        missions: missions_playfair,
+        title: "Misiones · Cifrado Playfair",
+        description: "Domina el primer cifrado poligráfico de la historia. Construye matrices, prepara dígrаfos y aplica las tres reglas geométricas para cifrar y descifrar mensajes como lo hacían los militares británicos en la Primera Guerra Mundial.",
+    },
 };
