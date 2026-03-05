@@ -112,6 +112,63 @@ const missions_caesar = [
     },
 ];
 
+const missions_vigenere = [
+    {
+        id: 1,
+        title: "Misión 1 · Cifra con Vigenère",
+        description:
+            "Cifra el mensaje ATAQUE usando la clave LIMON. Aplica la fórmula c_i = (m_i + k_i) mod 26 letra por letra. La clave cicla: L,I,M,O,N,L. Escribe el resultado en mayúsculas.",
+        answer: "LBMEHP",
+        hint:
+            "¿No sabes por dónde empezar? Prueba a usar el cifrador de la lección — escribe ATAQUE como texto y LIMON como clave. ¡La sección 'Cifra tu mensaje secreto' hará el trabajo por ti!"
+    },
+    {
+        id: 2,
+        title: "Misión 2 · Descifra el mensaje",
+        description:
+            "Tienes el mensaje cifrado LBMEHP y sabes que la clave es LIMON. Aplica la fórmula m_i = (c_i - k_i + 26) mod 26 para recuperar el texto original. Escribe el resultado en mayúsculas.",
+        answer: "ATAQUE",
+        hint:
+            "Recuerda que descifrar es la operación inversa: m = (c - k + 26) mod 26. Si tienes dudas, vuelve a la lección y usa el cifrador con ATAQUE y LIMON — verás cómo el resultado de 'Descifrado ✓' confirma el mensaje original."
+    },
+    {
+        id: 3,
+        title: "Misión 3 · El ciclo de la clave",
+        description:
+            "Tienes un mensaje de 12 letras y una clave de 4 letras. ¿Cuántas veces completa la clave su ciclo al cifrar el mensaje entero?",
+        answer: "3",
+        hint:
+            "Divide la longitud del mensaje entre la longitud de la clave: 12 ÷ 4 = ?"
+    },
+    {
+        id: 4,
+        title: "Misión 4 · Polialfabético en acción",
+        description:
+            "Cifra el mensaje BANANA con la clave KEY (cicla como K,E,Y,K,E,Y). La letra A aparece en las posiciones 2, 4 y 6. ¿A qué tres letras cifradas distintas se convierte la A en esas posiciones? Escríbelas juntas en orden, en mayúsculas.",
+        answer: "EKY",
+        hint:
+            "Escribe BANANA como texto y KEY como clave en el cifrador de la lección. Fíjate en la fila 'Cifrado' del visualizador de ciclado — cada A aparece con una letra de clave distinta (E, K, Y) y produce un cifrado diferente. ¡Ese es el poder del cifrado polialfabético!"
+    },
+    {
+        id: 5,
+        title: "Misión 5 · Test de Kasiski",
+        description:
+            "Analizando un texto largo cifrado con Vigenère, encuentras que una misma secuencia de letras se repite. La distancia entre las dos primeras apariciones es 9, y entre la segunda y la tercera es 15. Según el método de Kasiski, ¿cuál es la longitud más probable de la clave?",
+        answer: "3",
+        hint:
+            "El método de Kasiski calcula el Máximo Común Divisor (MCD) de las distancias entre repeticiones. MCD(9, 15) = ?"
+    },
+    {
+        id: 6,
+        title: "Misión 6 · Espacio de claves",
+        description:
+            "Un cifrado César con el alfabeto inglés tiene 26 claves posibles. ¿Cuántas claves posibles tiene un cifrado de Vigenère con una clave de exactamente 3 letras del mismo alfabeto?",
+        answer: "17576",
+        hint:
+            "Cada una de las 3 posiciones de la clave puede ser cualquiera de las 26 letras, de forma independiente. El total es 26 × 26 × 26."
+    }
+];
+
 export const methodMissionsConfig = {
     "one-time-pad": {
         missions: missions_one_time_pad,
@@ -122,5 +179,10 @@ export const methodMissionsConfig = {
         missions: missions_caesar,
         title: "Misiones · César",
         description: "Desafía tu comprensión del cifrado César con estas misiones. Cada misión te llevará a explorar diferentes aspectos de este método clásico, desde descubrir claves hasta entender su funcionamiento con distintos alfabetos. ¡Acepta el reto y demuestra tu habilidad para descifrar mensajes secretos!"
+    },
+    "vigenere": {
+        missions: missions_vigenere,
+        title: "Misiones · Vigenère",
+        description: "Pon a prueba tus conocimientos sobre el cifrado de Vigenère con estas misiones. Cada desafío te llevará a cifrar, descifrar y analizar mensajes usando claves cíclicas, desde operaciones básicas hasta conceptos clave del criptoanálisis polialfabético. ¡Demuestra que dominas la Tabula Recta!"
     }
-}
+};

@@ -15,26 +15,11 @@ export const metodos = {
             ],
             salida: "str",
             ejemplos: [
-                {
-                    parametros: ["HELLO", "XMCKL"],
-                    resultados: "EQNVZ"
-                },
-                {
-                    parametros: ["ONE TIME PAD", "SECRETSECRET"],
-                    resultados: "GZX DVQQ ZTL"
-                },
-                {
-                    parametros: ["ABC", "XYZ"],
-                    resultados: "XZB"
-                },
-                {
-                    parametros: ["CRYPTO", "RANDOM"],
-                    resultados: "TYMWFD"
-                },
-                {
-                    parametros: ["ATTACK AT DAWN", "LEMONLEMONLE"],
-                    resultados: "LXFOPV EF RNHR"
-                }
+                { parametros: ["HELLO", "XMCKL"], resultados: "EQNVZ" },
+                { parametros: ["ONE TIME PAD", "SECRETSECRET"], resultados: "GZX DVQQ ZTL" },
+                { parametros: ["ABC", "XYZ"], resultados: "XZB" },
+                { parametros: ["CRYPTO", "RANDOM"], resultados: "TYMWFD" },
+                { parametros: ["ATTACK AT DAWN", "LEMONLEMONLE"], resultados: "LXFOPV EF RNHR" }
             ]
         },
         lab_descifrado: {
@@ -45,26 +30,11 @@ export const metodos = {
             ],
             salida: "str",
             ejemplos: [
-                {
-                    parametros: ["EQNVZ", "XMCKL"],
-                    resultados: "HELLO"
-                },
-                {
-                    parametros: ["GZX DVQQ ZTL", "SECRETSECRET"],
-                    resultados: "ONE TIME PAD"
-                },
-                {
-                    parametros: ["XZB", "XYZ"],
-                    resultados: "ABC"
-                },
-                {
-                    parametros: ["TYMWFD", "RANDOM"],
-                    resultados: "CRYPTO"
-                },
-                {
-                    parametros: ["LXFOPV EF RNHR", "LEMONLEMONLE"],
-                    resultados: "ATTACK AT DAWN"
-                }
+                { parametros: ["EQNVZ", "XMCKL"], resultados: "HELLO" },
+                { parametros: ["GZX DVQQ ZTL", "SECRETSECRET"], resultados: "ONE TIME PAD" },
+                { parametros: ["XZB", "XYZ"], resultados: "ABC" },
+                { parametros: ["TYMWFD", "RANDOM"], resultados: "CRYPTO" },
+                { parametros: ["LXFOPV EF RNHR", "LEMONLEMONLE"], resultados: "ATTACK AT DAWN" }
             ]
         }
     },
@@ -90,26 +60,11 @@ export const metodos = {
             ],
             salida: "str",
             ejemplos: [
-                {
-                    parametros: [14, "CAESAR"],
-                    resultados: "QOSGOF"
-                },
-                {
-                    parametros: [3, "HOLA MUNDO"],
-                    resultados: "KROD PXQGR",
-                },
-                {
-                    parametros: [1, "XYZ"],
-                    resultados: "YZA",
-                },
-                {
-                    parametros: [25, "B"],
-                    resultados: "A",
-                },
-                {
-                    parametros: [5, "FOX"],
-                    resultados: "KTC",
-                }
+                { parametros: [14, "CAESAR"], resultados: "QOSGOF" },
+                { parametros: [3, "HOLA MUNDO"], resultados: "KROD PXQGR" },
+                { parametros: [1, "XYZ"], resultados: "YZA" },
+                { parametros: [25, "B"], resultados: "A" },
+                { parametros: [5, "FOX"], resultados: "KTC" }
             ]
         },
         lab_descifrado: {
@@ -120,35 +75,51 @@ export const metodos = {
             ],
             salida: "str",
             ejemplos: [
-                {
-                    parametros: [14, "QOSGOF"],
-                    resultados: "CAESAR"
-                },
-                {
-                    parametros: [3, "KROD PXQGR"],
-                    resultados: "HOLA MUNDO",
-                },
-                {
-                    parametros: [1, "YZA"],
-                    resultados: "XYZ",
-                },
-                {
-                    parametros: [25, "A"],
-                    resultados: "B",
-                },
-                {
-                    parametros: [5, "KTC"],
-                    resultados: "FOX",
-                },
+                { parametros: [14, "QOSGOF"], resultados: "CAESAR" },
+                { parametros: [3, "KROD PXQGR"], resultados: "HOLA MUNDO" },
+                { parametros: [1, "YZA"], resultados: "XYZ" },
+                { parametros: [25, "A"], resultados: "B" },
+                { parametros: [5, "KTC"], resultados: "FOX" }
             ]
         }
     },
     'vigenere': {
         nombre: 'Vigenère',
+        clave: 'vigenere',
         descripcion_corta: 'Cifra un texto usando una palabra clave.',
         descripcion: 'Cifrado polialfabético que usa una palabra clave repetida para determinar desplazamientos distintos sobre el alfabeto. Durante siglos se consideró casi indescifrable. Permite que la misma letra en claro se cifre de múltiples formas, ocultando patrones simples.',
         href: '/metodos/vigenere',
-        icono: 'fa-solid fa-layer-group'
+        icono: 'fa-solid fa-layer-group',
+        lab_cifrado: {
+            descripcion: "Dado un mensaje y una clave, cifra el mensaje usando el cifrado de Vigenère.",
+            parametros: [
+                ["mensaje", "str"],
+                ["clave", "str"],
+            ],
+            salida: "str",
+            ejemplos: [
+                { parametros: ["ATAQUE", "LIMON"], resultados: "LBMEHP" },
+                { parametros: ["HOLA MUNDO", "CLAVE"], resultados: "JZLV QWYDJ" },
+                { parametros: ["HELLO WORLD", "KEY"], resultados: "RIJVS UYVJN" },
+                { parametros: ["CIFRADO", "VIGENERE"], resultados: "XQLVNHF" },
+                { parametros: ["SECRETO", "CLAVE"], resultados: "UPCMIVZ" }
+            ]
+        },
+        lab_descifrado: {
+            descripcion: "Dado un mensaje cifrado y la misma clave, recupera el mensaje original usando el cifrado de Vigenère.",
+            parametros: [
+                ["cifrado", "str"],
+                ["clave", "str"],
+            ],
+            salida: "str",
+            ejemplos: [
+                { parametros: ["LBMEHP", "LIMON"], resultados: "ATAQUE" },
+                { parametros: ["JZLV QWYDJ", "CLAVE"], resultados: "HOLA MUNDO" },
+                { parametros: ["RIJVS UYVJN", "KEY"], resultados: "HELLO WORLD" },
+                { parametros: ["XQLVNHF", "VIGENERE"], resultados: "CIFRADO" },
+                { parametros: ["UPCMIVZ", "CLAVE"], resultados: "SECRETO" }
+            ]
+        }
     },
     'hill': {
         nombre: 'Hill',
