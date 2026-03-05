@@ -84,7 +84,7 @@ export const metodos = {
         }
     },
     'vigenere': {
-        nombre: 'Vigenère',
+        nombre: 'Vigenere',
         clave: 'vigenere',
         descripcion_corta: 'Cifra un texto usando una palabra clave.',
         descripcion: 'Cifrado polialfabético que usa una palabra clave repetida para determinar desplazamientos distintos sobre el alfabeto. Durante siglos se consideró casi indescifrable. Permite que la misma letra en claro se cifre de múltiples formas, ocultando patrones simples.',
