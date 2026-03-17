@@ -8,6 +8,7 @@ import OneTimePad from "../Methods/Lecciones/OneTimePad";
 import Playfair from "../Methods/Lecciones/Playfair";
 import Caesar from "../Methods/Lecciones/Caesar";
 import Vigenere from "../Methods/Lecciones/Vigenere";
+import Hill from "../Methods/Lecciones/Hill";
 
 import DecryptedText from "../../components/text/DecryptedText";
 import TextType from "../../components/text/TextType";
@@ -23,7 +24,8 @@ const lessonsMap = {
     "one-time-pad": OneTimePad,
     caesar: Caesar,
     vigenere: Vigenere,
-    playfair: Playfair
+    playfair: Playfair,
+    hill: Hill,    
 };
 
 const HYPERSPEED_OPTIONS = {

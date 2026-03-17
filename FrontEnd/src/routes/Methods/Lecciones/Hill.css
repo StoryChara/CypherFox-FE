@@ -1,0 +1,829 @@
+/* =========================================================
+   routes/Methods/Lecciones/Hill.css
+   CypherFox – Cifrado de Hill
+   Sigue la misma arquitectura visual de Caesar.css / Playfair.css
+   ========================================================= */
+
+/* =========================================================
+   PÁGINA HILL
+   ========================================================= */
+.hill-page {
+    padding: 3rem 0 0;
+}
+
+.text-encrypted {
+    color: var(--cf-green) !important;
+}
+
+.hill-shell {
+    position: relative;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hill-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    background-color: rgba(6, 4, 14, 0.95);
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px 15px rgba(6, 4, 14, 0.9);
+}
+
+.hero-copy-tittle {
+    font-size: 2.6rem;
+    line-height: 1.15;
+}
+
+.hero-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(231, 143, 65, 0.7);
+    margin-bottom: 0.65rem;
+}
+
+/* Hero visual */
+.hero-visual {
+    position: relative;
+    min-height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-mascot {
+    position: absolute;
+    right: 55%;
+    bottom: 10px;
+    max-width: 17.5vh;
+    pointer-events: none;
+    z-index: 1;
+    animation: mascotFloat 4s ease-in-out infinite;
+}
+
+.hero-circle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.hero-circle-main {
+    width: 185px;
+    height: 185px;
+    background: radial-gradient(circle at 25% 20%, #e78f41, #06040e);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: heroPulse 3s ease-in-out infinite;
+}
+
+.hero-circle-main::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border-radius: 50%;
+    border: 1px dashed rgba(6, 4, 14, 0.7);
+}
+
+.hero-circle-inner {
+    text-align: center;
+}
+
+.k-label {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.k-value {
+    font-size: 2.2rem;
+    font-family: "Fira Code", ui-monospace, monospace;
+}
+
+.k-value-small {
+    font-size: 1rem;
+    font-family: "Fira Code", ui-monospace, monospace;
+    opacity: 0.8;
+}
+
+.hero-circle-small {
+    width: 70px;
+    height: 70px;
+    border: 2px solid rgba(231, 143, 65, 0.7);
+}
+
+.hero-circle-1 {
+    right: 0;
+    top: 10%;
+    animation: heroOrbit1 14s linear infinite;
+}
+
+.hero-circle-2 {
+    left: 5%;
+    bottom: 3%;
+    border-color: rgba(19, 130, 69, 0.8);
+    animation: heroOrbit2 18s linear infinite;
+}
+
+/* =========================================================
+   ANIMACIONES HERO
+   ========================================================= */
+@keyframes heroPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+    }
+
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+    }
+}
+
+@keyframes heroOrbit1 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(6px, 4px) rotate(10deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+@keyframes heroOrbit2 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(4px, 6px) rotate(8deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+@keyframes mascotFloat {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(6px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   FRANJAS GENERALES
+   ========================================================= */
+.hill-band {
+    margin-bottom: 3rem;
+}
+
+/* =========================================================
+   BANDA 1 – LABORATORIO + HISTORIA FLOTANTE
+   ========================================================= */
+.band-lab .band-lab-inner {
+    position: relative;
+    background-color: rgba(6, 4, 14, 0.98);
+    border-radius: 1.8rem;
+    padding: 1.6rem 1.4rem 2.6rem;
+    box-shadow: 0 0 10px 15px rgba(6, 4, 14, 0.9);
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.7s ease-out forwards;
+    animation-delay: 0.1s;
+}
+
+.band-lab .band-lab-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle at top left, rgba(19, 130, 69, 0.4), rgba(19, 130, 69, 0) 70%);
+    z-index: 0;
+}
+
+.band-lab .band-lab-inner> :not(.history-floating) {
+    position: relative;
+    z-index: 1;
+}
+
+.lab-core {
+    position: relative;
+    z-index: 3;
+}
+
+.lab-header-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 0.9rem;
+}
+
+.lab-subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+}
+
+/* Input clave en lab */
+.lab-keyword-input label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    gap: 0.3rem;
+}
+
+.lab-keyword-input .form-control {
+    margin-top: 0.3rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(231, 143, 65, 0.5);
+    color: var(--cf-text);
+    padding: 0.3rem 0.6rem;
+}
+
+.lab-keyword-input .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(231, 142, 65, 0.6);
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(231, 142, 65, 0.75);
+}
+
+.lab-keyword-input .form-control.input-error {
+    border-color: rgba(220, 60, 60, 0.8);
+    box-shadow: 0 0 0 0.15rem rgba(220, 60, 60, 0.3);
+}
+
+.error-hint {
+    color: rgba(220, 60, 60, 0.9);
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+}
+
+/* =========================================================
+   MATRICES 2×2
+   ========================================================= */
+.hill-matrices-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    align-items: flex-end;
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.hill-matrix-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hill-matrix-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(231, 143, 65, 0.85);
+}
+
+.hill-matrix {
+    border-collapse: separate;
+    border-spacing: 4px;
+    font-family: "Fira Code", ui-monospace, monospace;
+}
+
+.hill-matrix-cell {
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 8px;
+    background-color: rgba(6, 4, 14, 0.8);
+    border: 1px solid rgba(231, 143, 65, 0.2);
+    color: var(--cf-text);
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    cursor: default;
+}
+
+.hill-matrix-cell:hover {
+    transform: scale(1.1);
+    background-color: rgba(231, 143, 65, 0.15);
+    border-color: rgba(231, 143, 65, 0.5);
+    box-shadow: 0 0 0.4rem 0.1rem rgba(231, 143, 65, 0.35);
+}
+
+.hill-det-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1rem;
+    border-radius: 1rem;
+    background-color: rgba(6, 4, 14, 0.8);
+    border: 1px solid rgba(231, 143, 65, 0.2);
+}
+
+.hill-det-value {
+    font-family: "Fira Code", ui-monospace, monospace;
+    font-size: 1.6rem;
+    color: var(--cf-orange);
+}
+
+/* =========================================================
+   VISUALIZACIÓN PASO A PASO (bloque activo)
+   ========================================================= */
+.hill-step-row {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.hill-step-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.digraph-display {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-top: 1.1rem;
+}
+
+.digraph-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(249, 244, 244, 0.6);
+}
+
+.digraph-pair {
+    display: flex;
+    gap: 4px;
+}
+
+.digraph-letter {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-family: "Fira Code", ui-monospace, monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.digraph-letter.plain {
+    background-color: rgba(231, 143, 65, 0.15);
+    border: 1px solid rgba(231, 143, 65, 0.5);
+    color: var(--cf-orange);
+}
+
+.digraph-letter.cipher {
+    background-color: rgba(19, 130, 69, 0.15);
+    border: 1px solid rgba(19, 130, 69, 0.5);
+    color: #3ecf80;
+}
+
+.digraph-arrow {
+    font-size: 1.1rem;
+    color: rgba(249, 244, 244, 0.5);
+}
+
+/* =========================================================
+   HISTORIA FLOTANTE
+   ========================================================= */
+.history-floating {
+    position: absolute;
+    right: 1.4rem;
+    bottom: -2rem;
+    width: min(360px, 55%);
+    background-color: rgba(6, 4, 14, 0.92);
+    border-radius: 1.4rem 1.4rem 0 1.4rem;
+    padding: 1rem 1.1rem 1.2rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(231, 143, 65, 0.45);
+    z-index: 5;
+}
+
+.history-floating h3 {
+    margin-bottom: 0.45rem;
+}
+
+.history-floating p {
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
+}
+
+/* =========================================================
+   BANDA INFERIOR – PIZARRA MATEMÁTICA + JUEGO
+   ========================================================= */
+.band-bottom .band-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+    gap: 1.7rem;
+    align-items: start;
+}
+
+.card-free {
+    border-radius: 1.8rem;
+    padding: 1.4rem 1.3rem 1.6rem;
+    background-color: rgba(6, 4, 14, 0.95);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
+}
+
+.band-bottom .math-card,
+.band-bottom .game-card {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.7s ease-out forwards;
+}
+
+.band-bottom .math-card {
+    animation-delay: 0.2s;
+}
+
+.band-bottom .game-card {
+    animation-delay: 0.3s;
+}
+
+/* =========================================================
+   PIZARRA MATEMÁTICA
+   ========================================================= */
+.math-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.math-header-text {
+    flex: 1;
+}
+
+.math-help-button {
+    border: 1px solid var(--cf-orange);
+    background-color: transparent;
+    color: var(--cf-text);
+    border-radius: 999px;
+    padding: 0.25rem 0.8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.math-help-button:hover {
+    background-color: var(--cf-orange);
+    color: #06040e;
+    transform: translateY(-1px);
+    box-shadow: 0 0 0.4rem 0.1rem rgba(231, 143, 65, 0.5);
+}
+
+.math-list {
+    margin: 0.4rem 0 0.9rem;
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+}
+
+.math-list li {
+    margin-bottom: 0.25rem;
+}
+
+.math-explanation {
+    margin-top: 0.2rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.math-mascot {
+    display: block;
+    margin: 0.8rem auto 0;
+    max-width: 160px;
+    pointer-events: none;
+}
+
+/* =========================================================
+   JUEGO — toggle cifrar/descifrar
+   ========================================================= */
+.hill-mode-toggle {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.8rem 0 0.6rem;
+}
+
+.toggle-btn {
+    flex: 1;
+    border: 1px solid rgba(231, 143, 65, 0.5);
+    background-color: transparent;
+    color: var(--cf-text);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.toggle-btn.active {
+    background-color: var(--cf-orange);
+    color: #06040e;
+    border-color: var(--cf-orange);
+    box-shadow: 0 0 0.4rem 0.1rem rgba(231, 143, 65, 0.45);
+}
+
+.toggle-btn:not(.active):hover {
+    background-color: rgba(231, 143, 65, 0.1);
+}
+
+/* =========================================================
+   CONTROLES DE EJEMPLO
+   ========================================================= */
+.example-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.9rem;
+}
+
+.example-controls label {
+    flex: 1 1 220px;
+    font-size: 0.9rem;
+}
+
+.example-controls .form-control {
+    width: 100%;
+    margin-top: 0.3rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(231, 143, 65, 0.5);
+    color: var(--cf-text);
+    padding: 0.3rem 0.6rem;
+}
+
+.example-controls .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(231, 142, 65, 0.6);
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(231, 142, 65, 0.75);
+}
+
+.example-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.example-results>div {
+    flex: 1 1 200px;
+    padding: 0.6rem 0.7rem;
+    border-radius: 0.9rem;
+    background-color: rgb(6, 4, 14);
+    box-shadow: 0 0 0.5rem 0.1rem rgba(231, 142, 65, 0.1);
+}
+
+.example-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(231, 143, 65, 0.85);
+}
+
+.example-results p,
+.example-results span {
+    margin: 0.12rem 0 0;
+    font-family: "Fira Code", ui-monospace, monospace;
+}
+
+.game-tip {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    color: rgba(249, 244, 244, 0.85);
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(6, 4, 14, 0.5) !important;
+    backdrop-filter: blur(0.5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    overflow: auto;
+    animation: backdropFade 0.2s ease-out;
+}
+
+.modal-content {
+    max-width: 75%;
+    max-height: 75vh;
+    background-color: rgb(6, 4, 14) !important;
+    border-radius: 2rem !important;
+    border: 1px solid rgba(231, 143, 65, 0.6);
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    animation: modalPop 0.25s ease-out;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: rgba(231, 143, 65, 0.4);
+    border-radius: 999px;
+}
+
+.modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(231, 143, 65, 0.4) transparent;
+}
+
+.modal-header-with-fox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+}
+
+.modal-mascot {
+    max-width: 15vh;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.close-button {
+    margin-top: 0.9rem;
+    border: none;
+    background-color: var(--cf-orange);
+    color: #06040e;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+}
+
+.close-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0.4rem 0.1rem rgba(231, 143, 65, 0.5);
+}
+
+/* =========================================================
+   ANIMACIONES GENERALES
+   ========================================================= */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes backdropFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalPop {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+/* Tableta grande: historia flotante pasa a estática */
+@media (max-width: 1199px) {
+    .history-floating {
+        position: static;
+        width: 100%;
+        margin-top: 1.3rem;
+        border-radius: 1.4rem;
+    }
+}
+
+/* Tableta: hero y grids a 1 columna */
+@media (max-width: 992px) {
+    .hill-hero {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-visual {
+        order: 1;
+    }
+
+    .band-bottom .band-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .math-card {
+        margin-top: 0.4rem;
+    }
+
+    .hill-matrices-row {
+        gap: 1rem;
+    }
+}
+
+/* Móvil */
+@media (max-width: 576px) {
+    .hill-page {
+        padding: 2.4rem 0 3rem;
+    }
+
+    .hero-copy h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-visual {
+        min-height: 180px;
+    }
+
+    .band-lab .band-lab-inner {
+        padding-inline: 1.1rem;
+    }
+
+    .modal-content {
+        max-width: 90%;
+        max-height: 80vh;
+    }
+
+    .hill-matrix-cell {
+        width: 34px;
+        height: 34px;
+        font-size: 0.78rem;
+    }
+
+    .math-help-button {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.65rem;
+    }
+
+    .hill-mode-toggle {
+        flex-direction: column;
+    }
+}

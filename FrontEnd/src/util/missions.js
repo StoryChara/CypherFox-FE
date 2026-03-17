@@ -226,6 +226,63 @@ const missions_vigenere = [
     }
 ];
 
+const missions_hill = [
+    {
+        id: 1,
+        title: "Misión 1 · Letras a números",
+        description:
+            "El cifrado de Hill convierte cada letra a su posición en el alfabeto (A=0, B=1, …, Z=25). Si el bloque de mensaje es JULY, ¿cuál es la representación numérica de sus primeras dos letras, J y U? Escribe los dos números separados por un espacio.",
+        answer: "9 20",
+        hint:
+            "Cuenta la posición de cada letra en el alfabeto inglés empezando desde 0. J es la décima letra, U es la vigésimo primera."
+    },
+    {
+        id: 2,
+        title: "Misión 2 · Multiplicación mod 26",
+        description:
+            "El corazón del cifrado Hill es multiplicar el bloque mensaje por la matriz clave en mod 26. Si el vector fila es [9, 20] y la primera columna de K es [11, 3], ¿cuál es el primer elemento del resultado? Es decir, calcula (9×11 + 20×3) mod 26.",
+        answer: "3",
+        hint:
+            "Resuelve paso a paso: 9×11 = 99, 20×3 = 60, 99+60 = 159. Ahora aplica módulo 26: 159 = 6×26 + ?"
+    },
+    {
+        id: 3,
+        title: "Misión 3 · Cifra un bloque",
+        description:
+            "Usando la clave LIDH y el cifrador de la lección, cifra el mensaje JULY. Según la lección, el resultado esperado ya lo conoces. ¿Cuál es el texto cifrado completo?",
+        answer: "DELW",
+        hint:
+            "Usa el cifrador interactivo de la lección con mensaje JULY y clave LIDH. Verifica que la clave LIDH tiene determinante invertible en mod 26."
+    },
+    {
+        id: 4,
+        title: "Misión 4 · Determinante de la clave",
+        description:
+            "La clave KCHB forma la matriz K = [[10,2],[7,1]]. Para que K sea invertible en mod 26, su determinante debe tener inverso multiplicativo. Calcula det(K) mod 26.",
+        answer: "22",
+        hint:
+            "Para una matriz 2×2 [[a,b],[c,d]], det = (a×d - b×c) mod 26. Aquí: (10×1 - 2×7) mod 26."
+    },
+    {
+        id: 5,
+        title: "Misión 5 · ¿Es válida esta clave?",
+        description:
+            "La clave DCBA forma la matriz [[3,2],[1,0]]. Su determinante es (3×0 - 2×1) mod 26 = 24. ¿Existe el inverso multiplicativo de 24 en mod 26? Responde SI o NO.",
+        answer: "NO",
+        hint:
+            "Un número tiene inverso en mod 26 solo si es coprimo con 26, es decir, si gcd(número, 26) = 1. Calcula gcd(24, 26)."
+    },
+    {
+        id: 6,
+        title: "Misión 6 · Pad del mensaje",
+        description:
+            "El cifrado de Hill con bloques de 4 letras exige que el mensaje tenga longitud múltiplo de 4. Si el mensaje es CRYPTOGRAPHY (12 letras), ¿cuántas X de relleno se añaden al final?",
+        answer: "0",
+        hint:
+            "Cuenta las letras de CRYPTOGRAPHY: C-R-Y-P-T-O-G-R-A-P-H-Y. ¿Es ya múltiplo de 4? La fórmula es (4 - (len % 4)) % 4."
+    }
+];
+
 export const methodMissionsConfig = {
     "one-time-pad": {
         missions: missions_one_time_pad,
@@ -246,5 +303,10 @@ export const methodMissionsConfig = {
         missions: missions_playfair,
         title: "Misiones · Cifrado Playfair",
         description: "Domina el primer cifrado poligráfico de la historia. Construye matrices, prepara dígrаfos y aplica las tres reglas geométricas para cifrar y descifrar mensajes como lo hacían los militares británicos en la Primera Guerra Mundial.",
+    },
+    "hill": {
+        missions: missions_hill,
+        title: "Misiones · Cifrado Hill",
+        description: "Pon a prueba tu dominio del primer cifrado criptográfico basado en álgebra lineal. Desde la conversión de letras a matrices hasta la multiplicación modular y la invertibilidad de claves, estas misiones te llevarán por todos los engranajes matemáticos que Lester Hill diseñó en 1929."
     },
 };

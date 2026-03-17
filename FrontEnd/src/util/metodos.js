@@ -154,10 +154,41 @@ export const metodos = {
     },
     'hill': {
         nombre: 'Hill',
+        clave: 'hill',
         descripcion_corta: 'Cifrado por sustitución que usa matrices.',
-        descripcion: 'Cifrado por bloques que aplica álgebra lineal sobre grupos de letras. Representa el texto como vectores y usa una matriz clave invertible módulo un número asociado al alfabeto. Fue uno de los primeros cifrados en usar formalmente matrices y operaciones matemáticas.',
+        descripcion: 'Cifrado por bloques que aplica álgebra lineal sobre grupos de letras. Representa bloques de texto como matrices y los multiplica por una matriz clave invertible en módulo 26. Fue el primer sistema criptográfico en usar álgebra lineal formalmente, propuesto por Lester S. Hill en 1929.',
         href: '/metodos/hill',
-        icono: 'fa-solid fa-table-list'
+        icono: 'fa-solid fa-table-list',
+        lab_cifrado: {
+            descripcion: "Dado un mensaje y una clave del mismo tamaño, cifra el mensaje usando Hill.",
+            parametros: [
+                ["mensaje", "str"],
+                ["clave", "str"],
+            ],
+            salida: "str",
+            ejemplos: [
+                { parametros: ["JULY", "LIDH"], resultados: "DELW" },
+                { parametros: ["HELP", "GYBN"], resultados: "HKEB" },
+                { parametros: ["ATTACK", "GYBN"], resultados: "HKEBUD" },
+                { parametros: ["MATH", "DCBA"], resultados: "CAXS" },
+                { parametros: ["HELLO", "LIDH"], resultados: "DEBPXX" }
+            ]
+        },
+        lab_descifrado: {
+            descripcion: "Dado un mensaje cifrado en letras y la misma clave, recupera el original usando Hill.",
+            parametros: [
+                ["cifrado", "str"],
+                ["clave", "str"],
+            ],
+            salida: "str",
+            ejemplos: [
+                { parametros: ["DELW", "LIDH"], resultados: "JULY" },
+                { parametros: ["HKEB", "GYBN"], resultados: "HELP" },
+                { parametros: ["HKEBUD", "GYBN"], resultados: "ATTACK" },
+                { parametros: ["CAXS", "DCBA"], resultados: "MATH" },
+                { parametros: ["DEBPXX", "LIDH"], resultados: "HELLOXX" }
+            ]
+        }
     },
     'homophonic': {
         nombre: 'Homophonic',
